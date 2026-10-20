@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/brand/sharp-frames-mascot-simple.png" alt="각진 안경을 쓴 Sharp Frames 마스코트" width="240" />
+</p>
+
 # Sharp Frames
 
 **각진 안경, 명확한 판단과 기준.**
