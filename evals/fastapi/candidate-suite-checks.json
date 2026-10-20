@@ -1,0 +1,146 @@
+[
+  {
+    "case": 1,
+    "repeat": 1,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 10
+  },
+  {
+    "case": 1,
+    "repeat": 1,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 9
+  },
+  {
+    "case": 1,
+    "repeat": 2,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 10
+  },
+  {
+    "case": 1,
+    "repeat": 2,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 7
+  },
+  {
+    "case": 1,
+    "repeat": 3,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 9
+  },
+  {
+    "case": 1,
+    "repeat": 3,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 9
+  },
+  {
+    "case": 2,
+    "repeat": 1,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 13
+  },
+  {
+    "case": 2,
+    "repeat": 1,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 13
+  },
+  {
+    "case": 2,
+    "repeat": 2,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 13
+  },
+  {
+    "case": 2,
+    "repeat": 2,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 12
+  },
+  {
+    "case": 2,
+    "repeat": 3,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 11
+  },
+  {
+    "case": 2,
+    "repeat": 3,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 12
+  },
+  {
+    "case": 3,
+    "repeat": 1,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 6
+  },
+  {
+    "case": 3,
+    "repeat": 1,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 10
+  },
+  {
+    "case": 3,
+    "repeat": 2,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 10
+  },
+  {
+    "case": 3,
+    "repeat": 2,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 7
+  },
+  {
+    "case": 3,
+    "repeat": 3,
+    "condition": "with_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 10
+  },
+  {
+    "case": 3,
+    "repeat": 3,
+    "condition": "without_skill",
+    "exit_code": 0,
+    "passed": true,
+    "tests_run": 6
+  }
+]

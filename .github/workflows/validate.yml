@@ -25,3 +25,7 @@ jobs:
       - run: python tools/check_repository.py
       - run: python -m compileall -q tools evals/fixtures
       - run: git diff --check
+      - name: Install frozen API evaluation dependencies
+        run: python -m pip install --disable-pip-version-check -r evals/fastapi/requirements.txt
+      - name: Reproduce saved API evaluation results
+        run: python -X utf8 evals/fastapi/replay_evidence.py

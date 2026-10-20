@@ -1,0 +1,87 @@
+{
+  "valid_for_narrow_smoke": true,
+  "issues": [
+    {
+      "severity": "medium_limited_coverage",
+      "location": "evaluate.py:209-221; protocol.json:32",
+      "detail": "The paid-filter response is asserted exactly, but status=canceled checks only total. The constructed data have 16 paid and 16 canceled visible orders. A canceled branch that returns paid items and their count can satisfy this assertion. No canceled item status, id ordering, or pagination is asserted.",
+      "implication": "Passing this group does not establish the required canceled filter behavior. This is a concrete false-negative gap, not an invalid expected result or a reason to discard the other listing checks."
+    },
+    {
+      "severity": "medium_limited_coverage",
+      "location": "evaluate.py:149-158; fixture/store/db.py:34-38; protocol.json:27",
+      "detail": "The sole injected DB failure aborts INSERT into stock_movements for a single-line order. The snapshot meaningfully checks full-table rollback at that point. No failure is injected into the later cancel_requests write, and the successful multi-line case is not combined with an injected failure.",
+      "implication": "A cancellation implementation that commits inventory/history before persisting its key could pass the observed rollback scenario while violating all-or-nothing behavior on a key-write failure. Report rollback for the injected movement-write failure, not all DB failure points."
+    },
+    {
+      "severity": "medium_limited_coverage",
+      "location": "evaluate.py:105-116,135-147,160-175; fixture/store/db.py:36-38; protocol.json:27",
+      "detail": "Assertions verify cancel_requests row count and API replay behavior, but never inspect user_id, request_key, order_id, or response_json. Replay runs against the same app instance; the tests do not establish that the persisted row stores the specified result or is the source of replay.",
+      "implication": "Passing demonstrates API retries and a row-count side effect for these requests, not correct persisted idempotency-result data or durable replay after app recreation."
+    },
+    {
+      "severity": "low_limited_coverage",
+      "location": "evaluate.py:55-101; fixture/store/schemas.py:4-11; protocol.json:22",
+      "detail": "Quote parity uses four single-line baskets. The validation assertions cover empty lines and several invalid quantities but omit a multi-line valid basket and schema constraints such as the 50-line maximum and nonempty SKU. The independently preserved original tests do not cover those inputs either.",
+      "implication": "The oracle supports the sampled price policies, forged-input case, and tested validation errors. It does not establish full equivalence to the existing basket contract across the explicitly supported basket shape."
+    },
+    {
+      "severity": "low_limited_coverage",
+      "location": "evaluate.py:255-262; fixture/tests/test_existing.py:21-41; protocol.json:22,27,32",
+      "detail": "The independent original regression copy is a useful protection against candidate-edited tests, but comprises only three tests: one successful order/stock example, several read-access cases, and one checkout rollback plus boolean-quantity rejection.",
+      "implication": "A passing complete_success means all selected external groups and these original regression tests passed. It is not proof that every preexisting API behavior was preserved."
+    }
+  ],
+  "per_task_coverage": [
+    {
+      "case": 1,
+      "meaningful_coverage": [
+        "Exact 200 quote shape and four policy amounts, including VIP rounding, coupon, and shipping behavior; cross-check against actual order creation (evaluate.py:55-75).",
+        "Repeated successful quotes preserve all six fixture-table row snapshots (evaluate.py:77-83).",
+        "A forged price/tier/user input case, strict quantity cases, missing/unknown authentication, unknown product, and invalid coupon (evaluate.py:85-101)."
+      ],
+      "limitation": "Single-line examples and selected validation cases support narrow contract smoke coverage, not exhaustive quote/order parity."
+    },
+    {
+      "case": 2,
+      "meaningful_coverage": [
+        "Two-line restoration, exact cancel response/status, per-SKU history, owner/tenant/manager boundaries, and missing authentication (evaluate.py:105-124).",
+        "Selected key syntax cases; repeated retries, key/order conflict, new-key canceled-order conflict, and cross-user key independence (evaluate.py:126-147).",
+        "A real SQLite trigger-induced movement-write rollback, followed by successful retry (evaluate.py:149-158).",
+        "Simultaneous same-key and different-key request batches with final inventory/history invariants (evaluate.py:160-190)."
+      ],
+      "limitation": "Persisted key/result fields and late-write rollback are unasserted. The accepted key has length 60; exact valid 1/64 boundaries are not tested. Concurrent batches are meaningful smoke evidence for their executions, not a proof covering every interleaving."
+    },
+    {
+      "case": 3,
+      "meaningful_coverage": [
+        "Owner, other-tenant, manager, and same-tenant-other-owner expected visibility; envelope and item keys; default limit/offset (evaluate.py:197-207).",
+        "Exact paid-filter page sorted before slicing, full scoped paid total, and empty-page total (evaluate.py:209-219).",
+        "Selected invalid filters/ranges, one injection-shaped status value, missing/unknown authentication, valid upper-limit request, and read-only table snapshots (evaluate.py:223-234)."
+      ],
+      "limitation": "Canceled filtering asserts count alone; default page-size truncation is not exercised because the unfiltered default dataset is small. The injection assertion establishes rejection of that payload, not general SQL-injection security."
+    }
+  ],
+  "claims_not_supported": [
+    {
+      "claim": "Passing groups establish complete task correctness, comprehensive regression preservation, or broad maintainability quality.",
+      "basis": "Finite external behavioral checks have the concrete gaps above; qualitative maintainability review is a distinct secondary endpoint (protocol.json:9-10)."
+    },
+    {
+      "claim": "All DB failure points in cancellation are proven atomic, or persisted replay data are verified.",
+      "basis": "Only movement insertion is fault-injected, and cancel_requests content is never inspected (evaluate.py:116,149-175)."
+    },
+    {
+      "claim": "Execution launch order was randomized or the study was independently preregistered before workers started.",
+      "basis": "These would contradict the recorded deviations: alternating/counterbalanced execution; local protocol finalized while task-1 workers were already running (execution-notes.md:7-14)."
+    },
+    {
+      "claim": "The study establishes human review-time savings, token/duration efficiency, platform skill triggering, perfect blinding, or physically enforced baseline isolation.",
+      "basis": "Those measurements or guarantees are explicitly absent (execution-notes.md:19-22,26-32)."
+    },
+    {
+      "claim": "Nine executions per condition represent nine independent task types or establish broad superiority.",
+      "basis": "The design contains three synthetic, clustered task types with repetitions (protocol.json:11-16; execution-notes.md:33-34)."
+    }
+  ]
+}

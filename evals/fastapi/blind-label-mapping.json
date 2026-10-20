@@ -1,0 +1,65 @@
+[
+  {
+    "pair": 1,
+    "case": 1,
+    "repeat": 1,
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  {
+    "pair": 2,
+    "case": 1,
+    "repeat": 2,
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  {
+    "pair": 3,
+    "case": 1,
+    "repeat": 3,
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  {
+    "pair": 4,
+    "case": 2,
+    "repeat": 1,
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  {
+    "pair": 5,
+    "case": 2,
+    "repeat": 2,
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  {
+    "pair": 6,
+    "case": 2,
+    "repeat": 3,
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  {
+    "pair": 7,
+    "case": 3,
+    "repeat": 1,
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  {
+    "pair": 8,
+    "case": 3,
+    "repeat": 2,
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  {
+    "pair": 9,
+    "case": 3,
+    "repeat": 3,
+    "A": "without_skill",
+    "B": "with_skill"
+  }
+]

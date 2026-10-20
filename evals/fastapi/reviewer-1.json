@@ -1,0 +1,341 @@
+{
+  "reviewer": 1,
+  "pairs": [
+    {
+      "pair": 1,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/api.py",
+          "line": 28,
+          "message": "Correctness and ownership: the quote route uses the existing BasketInput, authenticated actor, and price_basket and only serializes its result. B/store/api.py:28-30 has the same request flow and calculation; neither duplicates pricing or writes database state."
+        },
+        {
+          "file": "A/tests/test_quotes.py",
+          "line": 102,
+          "message": "Verification: A checks exact quote/order error parity and database snapshots, alongside independent expected totals and forged price/tier checks. B/tests/test_quotes.py:90 supplies comparable checks; B additionally changes stored prices/tier while A separately checks the exact shipping boundary. These are useful complementary cases without a material overall quality difference."
+        }
+      ],
+      "uncertainties": [
+        "Correctness review was static; no candidate tests were executed and report claims of passing runs were not independently confirmed."
+      ]
+    },
+    {
+      "pair": 2,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/api.py",
+          "line": 28,
+          "message": "Correctness and maintainability: the added endpoint is identical to B/store/api.py:28-30. Both use the same schema, authentication and shared read-only settlement function and preserve the original order routes."
+        },
+        {
+          "file": "A/tests/test_quotes.py",
+          "line": 27,
+          "message": "Verification: A's shared assertion checks independent amounts, repeated quote snapshots, and subsequent order parity. B/tests/test_quotes.py:27-53 performs equivalent checks in a scenario loop; both also compare errors and ignore forged prices/tier. A covers a multi-product basket while B checks duplicate lines exceeding stock. Neither difference establishes an overall advantage."
+        }
+      ],
+      "uncertainties": [
+        "Neither added suite independently tests the coupon floor after lowering product prices, although both reuse the unchanged authoritative pricing implementation.",
+        "Reported test execution was not independently confirmed."
+      ]
+    },
+    {
+      "pair": 3,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/api.py",
+          "line": 28,
+          "message": "Correctness and ownership: A serializes the existing price_basket result using asdict; B/store/api.py:27-29 returns the same Breakdown dataclass with a return annotation. Both keep a single pricing rule and a small read-only route. The serialization/annotation choice is not a meaningful maintainability advantage here."
+        },
+        {
+          "file": "A/tests/test_quotes.py",
+          "line": 27,
+          "message": "Verification: A uses independently calculated expected totals, quote/order parity, database snapshots, forged-input cases and failure parity. B/tests/test_quotes.py:27-126 covers the same main contracts, adding an explicit insufficient-stock quote case and exact shipping boundary while A exercises duplicate-line quote/order parity. Both provide substantial independent checks."
+        }
+      ],
+      "uncertainties": [
+        "FastAPI serialization behavior and reported passing runs were inspected through source and reports, not independently executed."
+      ]
+    },
+    {
+      "pair": 4,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/orders.py",
+          "line": 23,
+          "message": "Correctness and maintainability: A acquires BEGIN IMMEDIATE before shared visibility and saved-key checks, groups quantities by product, and includes stock/history/status/key changes in one connection transaction. B/store/orders.py:21-57 follows the same sequence and policy ownership. Added parameter annotations in A do not establish a material advantage."
+        },
+        {
+          "file": "A/tests/test_cancel.py",
+          "line": 103,
+          "message": "Verification: A injects failures at all write stages and deferred commit, and checks concurrent same-key, different-key and different-order requests. B/tests/test_cancellation.py:106-163 checks all write stages and the same race categories; B:83-85 additionally tests visibility loss before replay. The distinct extra cases are useful, but both verify the requested transaction and concurrency contracts comprehensively."
+        }
+      ],
+      "uncertainties": [
+        "No behavior defect identified from static inspection; concurrency outcomes, validator behavior and reported runs were not independently executed.",
+        "SQLite lock waiting still uses the fixture's existing 10-second timeout on both sides."
+      ]
+    },
+    {
+      "pair": 5,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/api.py",
+          "line": 23,
+          "message": "Correctness and contracts: A uses re.fullmatch for the required ASCII key rule; B/store/api.py:26-33 declares length and pattern validation on Header. Both enforce the requested rule at the API boundary with 422 failures. B exposes constraints declaratively, but the small explicit validation in A remains readily understandable."
+        },
+        {
+          "file": "A/store/orders.py",
+          "line": 21,
+          "message": "Ownership and locality: A and B/store/orders.py:21 both reuse require_visible_order and serialize all cancellation reads/writes inside BEGIN IMMEDIATE and a connection transaction. A writes the status after stock/history; B writes it first. All writes remain in one transaction, so this sequencing does not establish a correctness difference."
+        },
+        {
+          "file": "A/tests/test_cancellation.py",
+          "line": 104,
+          "message": "Verification: A's failure at the final key insert checks rollback of all preceding changes, plus same-key and new-key concurrency. B/tests/test_cancellation.py:107-159 exercises individual write failures and simultaneous key reuse across orders as well. B has broader race-specific coverage; A still checks the core rollback and retry requirements. This is a modest coverage difference, insufficient to outweigh otherwise equivalent implementation quality."
+        }
+      ],
+      "uncertainties": [
+        "B's anchored Header pattern uses Pydantic's configured validator, whereas A uses Python fullmatch; both suites include trailing-newline cases, but neither run was independently executed.",
+        "Neither candidate supplies a deferred-commit failure check. This is a verification limit, not an identified transaction defect."
+      ]
+    },
+    {
+      "pair": 6,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/api.py",
+          "line": 26,
+          "message": "Correctness and contracts: A places required key constraints in Header; B/store/api.py:27-31 checks the equivalent ASCII/length rule with fullmatch. Both keep validation at the route and delegate the transaction. A's declarative validation and B's explicit validation are reasonable small implementations."
+        },
+        {
+          "file": "A/store/orders.py",
+          "line": 21,
+          "message": "Ownership and side effects: A and B/store/orders.py:21-54 use the same shared order visibility rule, write-lock-before-read discipline, saved user-key response, grouped product quantities and single transaction. Formatting and comment differences do not change understanding of the operation."
+        },
+        {
+          "file": "A/tests/test_cancellation.py",
+          "line": 54,
+          "message": "Verification: A explicitly replays through a new application instance and injects failure at each write table. B/tests/test_cancel.py:92-142 checks partial multi-product failure and three concurrency cases, where A checks concurrent matching retries only. Both verify the stated primary contracts; their complementary checks do not establish a material overall maintainability difference."
+        }
+      ],
+      "uncertainties": [
+        "A does not exercise concurrent conflicting keys; B does not exercise failure at the order-status write. Both are coverage limits rather than demonstrated behavior defects.",
+        "Reported passing runs and regex-validator behavior were not independently executed."
+      ]
+    },
+    {
+      "pair": 7,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/orders.py",
+          "line": 7,
+          "message": "Correctness and policy ownership: A builds count and page predicates from visibility_clause and binds status/limit/offset. B/store/orders.py:10-29 uses the same policy and parameter binding. A skips the page query when offset exceeds total; B clamps the SQL offset to total while returning the original offset. Both handle an empty page and very large offsets correctly for the requested use."
+        },
+        {
+          "file": "B/store/schemas.py",
+          "line": 8,
+          "message": "Contracts and locality: B supplies OrderSummary/OrderPage response models and A returns the explicitly selected summary dictionaries. B's models describe the response while A's short projection is directly inspectable; neither introduces a redundant policy or an unnecessary service layer. Added models alone do not determine a winner."
+        },
+        {
+          "file": "A/tests/test_order_list.py",
+          "line": 41,
+          "message": "Verification: A compares visibility with detail access for every fixture actor and checks filtered count, pagination, empty/large-offset pages and invalid/auth inputs. B/tests/test_order_list.py:33-94 supplies comparable independent expected results and adds an owner-matching order in another tenant. Both meaningfully test the requested boundaries."
+        }
+      ],
+      "uncertainties": [
+        "Neither candidate promises a single snapshot spanning the count and page SELECTs under concurrent writes; that behavior was not requested and no advantage is inferred.",
+        "Reports of passing runs were not independently confirmed."
+      ]
+    },
+    {
+      "pair": 8,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/orders.py",
+          "line": 7,
+          "message": "Correctness and maintainability: A and B/store/orders.py:7-24 derive both SQL statements from the existing visibility predicate, bind user values, count before pagination and avoid binding oversized offsets when the page is empty. A uses an early return; B initializes items then conditionally queries. These are equivalent small control flows."
+        },
+        {
+          "file": "A/store/schemas.py",
+          "line": 14,
+          "message": "Contracts: A's OrderSummary/OrdersPage models and B/store/schemas.py:14-24 describe the same fields and types and are used as response models by their routes. Different page-class names and added argument annotations in B have no material effect on future changes."
+        },
+        {
+          "file": "A/tests/test_order_list.py",
+          "line": 31,
+          "message": "Verification: A checks exact actor-specific IDs and detail projections, status before pagination, retained counts, giant offsets, errors and authentication. B/tests/test_order_list.py:34-115 covers those same contracts and adds a matching-owner/cross-tenant row. Different grouping/test counts do not demonstrate an overall quality difference."
+        }
+      ],
+      "uncertainties": [
+        "The reported passing test runs were not independently executed.",
+        "Count/page consistency during concurrent writes was not tested on either side; the task does not require that additional guarantee."
+      ]
+    },
+    {
+      "pair": 9,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/orders.py",
+          "line": 7,
+          "message": "Correctness and ownership: A and B/store/orders.py:7-23 use the same visibility predicate and parameterized status/count/page queries, descending IDs and empty-page handling for huge offsets. Early-return versus conditional-query structure makes no material difference here."
+        },
+        {
+          "file": "B/store/api.py",
+          "line": 18,
+          "message": "Readability and contracts: B adds explicit response models and a named OrderStatus alias; A/store/api.py:19-27 validates the same query contract with an inline Literal and returns the explicitly projected dictionary. Both flows are clear and local. Models and annotations alone do not justify preferring B."
+        },
+        {
+          "file": "A/tests/test_order_list.py",
+          "line": 30,
+          "message": "Verification: A independently checks the full response, all actor roles, agreement with detail visibility, filtered pagination and totals, oversized offsets, errors and injection inputs. B/tests/test_order_list.py:35-120 adds an actual result set exceeding the default page size and a matching-owner/cross-tenant row. Those strengthen specific regressions, while A already verifies limit slicing and both policy clauses. The extra cases do not establish a material overall quality gap."
+        }
+      ],
+      "uncertainties": [
+        "Passing runs in both reports were not independently confirmed.",
+        "A does not independently exercise the default page size against more than 20 rows; B does. This is a coverage difference, not an identified defect in A."
+      ]
+    }
+  ],
+  "limits": [
+    "Read only the fixed rubric, shared fixture and anonymized task/candidate files within blind/pair-1 through pair-9. Did not inspect mappings, protocols, graders, original runs, other reviewer outputs, skills or network resources.",
+    "Static review only. A preliminary attempt to invoke the default python command failed because it resolved to an inaccessible WindowsApps alias; no candidate code or tests were executed and no runtime pass/fail claims are made here.",
+    "Original fixture files were compared by content hashes; changed source, added tests and candidate reports were read. The original regression tests were unchanged in all candidates.",
+    "No material behavior defect was identified by static inspection in these pairs. Ties reflect close implementation quality and adequate comparable checks, not proof that either implementation is defect-free.",
+    "Scores are exploratory ordinal AI judgments under this rubric, not measured developer review time or evidence of universal productivity differences."
+  ]
+}

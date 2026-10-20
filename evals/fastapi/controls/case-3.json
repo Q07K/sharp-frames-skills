@@ -1,0 +1,47 @@
+{
+  "case": 3,
+  "expectations": [
+    {
+      "text": "__main__.Listings.test_bad_filters_and_auth",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 225, in test_bad_filters_and_auth\n    self.assertEqual(self.get(query=query).status_code, 422, query)\nAssertionError: 405 != 422 : ?limit=0\n"
+    },
+    {
+      "text": "__main__.Listings.test_filter_count_and_pagination_order",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 215, in test_filter_count_and_pagination_order\n    self.assertEqual(response.status_code, 200, response.text)\nAssertionError: 405 != 200 : {\"detail\":\"Method Not Allowed\"}\n"
+    },
+    {
+      "text": "__main__.Listings.test_listing_is_read_only",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 233, in test_listing_is_read_only\n    self.assertEqual(self.get(user, '?limit=1&offset=1').status_code, 200)\nAssertionError: 405 != 200\n"
+    },
+    {
+      "text": "__main__.Listings.test_owner_manager_tenant_scope_and_shape",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 200, in test_owner_manager_tenant_scope_and_shape\n    self.assertEqual(response.status_code, 200, response.text)\nAssertionError: 405 != 200 : {\"detail\":\"Method Not Allowed\"}\n"
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_access_boundary",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_order_policy_and_stock",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_rollback_and_validation",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 4,
+    "total": 7,
+    "pass_rate": 0.42857142857142855
+  },
+  "complete_success": false
+}

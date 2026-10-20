@@ -1,0 +1,62 @@
+{
+  "case": 2,
+  "expectations": [
+    {
+      "text": "__main__.Cancellation.test_concurrent_different_keys_only_one_can_cancel",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 187, in test_concurrent_different_keys_only_one_can_cancel\n    self.assertEqual(sorted(codes), [200, 409])\nAssertionError: Lists differ: [404, 404] != [200, 409]\n\nFirst differing element 0:\n404\n200\n\n- [404, 404]\n+ [200, 409]\n"
+    },
+    {
+      "text": "__main__.Cancellation.test_concurrent_same_key_is_applied_once",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 171, in test_concurrent_same_key_is_applied_once\n    self.assertEqual(results, [(200, {'id': 10, 'status': 'canceled'})] * 4)\nAssertionError: Lists differ: [(404, {'detail': 'Not Found'}), (404, {'de[80 chars]d'})] != [(200, {'id': 10, 'status': 'canceled'}), ([116 chars]d'})]\n\nFirst differing element 0:\n(404, {'detail': 'Not Found'})\n(200, {'id': 10, 'status': 'canceled'})\n\n- [(404, {'detail': 'Not Found'}),\n-  (404, {'detail': 'Not Found'}),\n-  (404, {'detail': 'Not Found'}),\n-  (404, {'detail': 'Not Found'})]\n+ [(200, {'id': 10, 'status': 'canceled'}),\n+  (200, {'id': 10, 'status': 'canceled'}),\n+  (200, {'id': 10, 'status': 'canceled'}),\n+  (200, {'id': 10, 'status': 'canceled'})]\n"
+    },
+    {
+      "text": "__main__.Cancellation.test_failure_rolls_back_every_table",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 158, in test_failure_rolls_back_every_table\n    self.assertEqual(self.cancel().status_code, 200)\nAssertionError: 404 != 200\n"
+    },
+    {
+      "text": "__main__.Cancellation.test_key_validation",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 132, in test_key_validation\n    self.assertEqual(response.status_code, 422, (key, response.text))\nAssertionError: 404 != 422 : (None, '{\"detail\":\"Not Found\"}')\n"
+    },
+    {
+      "text": "__main__.Cancellation.test_permission_boundary_and_auth",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 122, in test_permission_boundary_and_auth\n    self.assertEqual(self.client.post('/orders/10/cancel', headers={'Idempotency-Key': 'retry_1'}).status_code, 401)\nAssertionError: 404 != 401\n"
+    },
+    {
+      "text": "__main__.Cancellation.test_retry_and_conflict_are_idempotent",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 137, in test_retry_and_conflict_are_idempotent\n    self.assertEqual(original.status_code, 200, original.text)\nAssertionError: 404 != 200 : {\"detail\":\"Not Found\"}\n"
+    },
+    {
+      "text": "__main__.Cancellation.test_success_restores_all_lines_and_records_history",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 110, in test_success_restores_all_lines_and_records_history\n    self.assertEqual(response.status_code, 200, response.text)\nAssertionError: 404 != 200 : {\"detail\":\"Not Found\"}\n"
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_access_boundary",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_order_policy_and_stock",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_rollback_and_validation",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 7,
+    "total": 10,
+    "pass_rate": 0.3
+  },
+  "complete_success": false
+}

@@ -1,0 +1,323 @@
+{
+  "reviewer": 2,
+  "pairs": [
+    {
+      "pair": 1,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/api.py",
+          "line": 28,
+          "message": "Correctness and ownership: both endpoints call the existing price_basket with BasketInput and the authenticated actor; B/store/api.py:28 has the same behavior. Neither adds pricing policy or database writes."
+        },
+        {
+          "file": "A/tests/test_quotes.py",
+          "line": 55,
+          "message": "Verification: A checks the exact shipping boundary after discounts and whole-database immutability; B/tests/test_quotes.py:27 and :75 independently check totals, order parity, changed database prices/tier and coupon floor. These are comparable meaningful checks; differing organization and case counts do not establish a winner."
+        }
+      ],
+      "uncertainties": [
+        "Candidate reports claim successful test runs; those runs were not independently executed in this review."
+      ]
+    },
+    {
+      "pair": 2,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/api.py",
+          "line": 28,
+          "message": "Correctness: the new quote implementation is identical to B/store/api.py:28 and preserves the shared input, authentication and pricing contracts without writes."
+        },
+        {
+          "file": "A/tests/test_quotes.py",
+          "line": 27,
+          "message": "Verification: A's parity helper verifies explicit totals and repeated-read snapshots; B/tests/test_quotes.py:27 does the same through table-driven cases and :67 checks duplicate lines exceeding stock without mutation. Both cover the central requested behavior; neither directly exercises the coupon floor, so their verification limits are comparable."
+        }
+      ],
+      "uncertainties": [
+        "Static review does not independently confirm the reports' claimed passing runs."
+      ]
+    },
+    {
+      "pair": 3,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/api.py",
+          "line": 30,
+          "message": "Ownership: A serializes the existing Breakdown with asdict; B/store/api.py:28 returns that same dataclass with a return annotation. Both reuse the existing pricing authority and provide the required JSON fields; the extra annotation alone does not decide quality."
+        },
+        {
+          "file": "A/tests/test_quotes.py",
+          "line": 86,
+          "message": "Verification: both compare quote/order errors and full database snapshots. A also verifies duplicate-line order parity at :122; B/tests/test_quotes.py:60 verifies exact shipping threshold boundaries and :120 checks unavailable stock without reserving it. These differences do not reveal a material defect or a clear overall advantage."
+        }
+      ],
+      "uncertainties": [
+        "FastAPI serialization and reported passing tests were assessed statically, not rerun."
+      ]
+    },
+    {
+      "pair": 4,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/orders.py",
+          "line": 23,
+          "message": "Correctness: A and B/store/orders.py:21 keep authorization, replay lookup, paid-state checks, grouped stock restoration, history and key persistence within one BEGIN IMMEDIATE transaction. Both check visibility before replay and share the original access rule."
+        },
+        {
+          "file": "A/tests/test_cancel.py",
+          "line": 103,
+          "message": "Verification: A injects failures through commit using a deferred foreign key and checks rollback/retry, while B/tests/test_cancellation.py:72 tests replay after ownership changes. Both also check write-stage failures and the three competing-request scenarios. Each adds concrete coverage and neither has a material behavior disadvantage."
+        }
+      ],
+      "uncertainties": [
+        "Concurrency and fault-injection tests were read but not executed; reported pass counts remain unverified."
+      ]
+    },
+    {
+      "pair": 5,
+      "winner": "B",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "B/tests/test_cancellation.py",
+          "line": 153,
+          "message": "Verification advantage: B explicitly races the same user/key against two different orders and verifies one cancellation and one conflict. A/tests/test_cancellation.py:114 only races requests against order 10, so it does not independently exercise the cross-order key collision required by the task."
+        },
+        {
+          "file": "B/tests/test_cancellation.py",
+          "line": 107,
+          "message": "B injects failures at order, stock, history and key writes and checks unchanged state. A/tests/test_cancellation.py:104 injects only the final key-insert failure. This is a concrete fault-coverage advantage, rather than a preference for additional test count."
+        },
+        {
+          "file": "A/store/orders.py",
+          "line": 21,
+          "message": "Correctness and maintainability: no material implementation defect identified on either side; both reuse require_visible_order, serialize state checks with BEGIN IMMEDIATE, group product quantities and atomically persist the user-scoped result. The preference is confined to verification."
+        }
+      ],
+      "uncertainties": [
+        "Both implementations appear correct statically. The verification preference is modest; neither candidate test suite was run."
+      ]
+    },
+    {
+      "pair": 6,
+      "winner": "B",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "B/tests/test_cancel.py",
+          "line": 92,
+          "message": "Verification advantage: B adds a second product and forces failure on B after earlier writes, then compares full relevant table snapshots. A/tests/test_cancellation.py:105 injects general table failures on the single-product fixture and its assert_initial_state checks only A stock and order 10. B therefore tests partial-loop rollback more directly."
+        },
+        {
+          "file": "B/tests/test_cancel.py",
+          "line": 128,
+          "message": "B verifies simultaneous distinct keys for one order and the same key for two orders; A/tests/test_cancellation.py:117 only verifies matching retries. These exercise two distinct conflict paths rather than merely increasing concurrent request count."
+        },
+        {
+          "file": "A/store/orders.py",
+          "line": 21,
+          "message": "Correctness: both cancellation functions share the existing authorization rule and a single immediate transaction for state, stock, movements and saved response. No material behavioral defect was identified; the winner reflects stronger independent failure and conflict checks."
+        }
+      ],
+      "uncertainties": [
+        "Concurrent outcomes, fault behavior and claimed test runs were assessed from source only."
+      ]
+    },
+    {
+      "pair": 7,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/orders.py",
+          "line": 7,
+          "message": "Correctness and ownership: both use visibility_clause once to build the predicate reused by count and page, bind status/pagination values, and sort before paging. A skips the page query beyond total; B/store/orders.py:20 clamps the SQL offset to total. Both preserve the requested offset in the response and safely handle oversized offsets."
+        },
+        {
+          "file": "A/tests/test_order_list.py",
+          "line": 41,
+          "message": "Verification: A cross-checks listing against detail visibility and tests filtering, empty totals and authentication precedence; B/tests/test_order_list.py:16 adds an empty actor and an order with matching owner in another tenant, then checks independent expected visibility and paging. These complementary cases support a tie. B's response models alone are not a reason to favor it."
+        }
+      ],
+      "uncertainties": [
+        "No concurrent-write snapshot guarantee was requested; separate count/page queries on both sides were not penalized for that additional behavior. Tests were not rerun."
+      ]
+    },
+    {
+      "pair": 8,
+      "winner": "tie",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "A/store/orders.py",
+          "line": 7,
+          "message": "Correctness and maintenance: both retain one shared access predicate, bound SQL values and a straightforward count-then-page flow. A returns early for empty pages; B/store/orders.py:15 returns through one result construction. Neither approach causes a material responsibility or clarity difference."
+        },
+        {
+          "file": "A/tests/test_order_list.py",
+          "line": 31,
+          "message": "Verification: A checks exact listing fields against detail responses, both filtered page cases and empty totals; B/tests/test_order_list.py:46 checks every candidate detail including a same-owner cross-tenant row, plus valid and invalid pagination boundaries. Both provide substantial independent checks, so more separately named B tests do not establish a winner."
+        }
+      ],
+      "uncertainties": [
+        "All existing test source files match the shared fixture. Candidate passing-run claims were not independently verified."
+      ]
+    },
+    {
+      "pair": 9,
+      "winner": "B",
+      "scores": {
+        "A": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 3
+        },
+        "B": {
+          "policy_ownership": 4,
+          "change_locality": 4,
+          "readability": 4,
+          "verification": 4
+        }
+      },
+      "reasons": [
+        {
+          "file": "B/tests/test_order_list.py",
+          "line": 80,
+          "message": "Verification advantage: B creates 25 additional visible orders and asserts the default page contains exactly the 20 highest IDs while total remains 28. A/tests/test_order_list.py:30 only has three visible orders in its default-page assertions, so it cannot detect an implementation that returns all rows while merely reporting limit=20."
+        },
+        {
+          "file": "B/tests/test_order_list.py",
+          "line": 22,
+          "message": "B inserts a same-owner order in another tenant and verifies it is excluded from both listing and individual access at :47. A's fixture only has users' orders within their own tenant, providing less independent coverage of the tenant-and-owner conjunction."
+        },
+        {
+          "file": "A/store/orders.py",
+          "line": 7,
+          "message": "Correctness and maintainability: both implementations reuse visibility_clause, share predicates between count and page, bind SQL values and avoid overflowing large offsets. No material runtime defect was identified; B's preference comes from specific regression detection, not additional schemas or test count."
+        }
+      ],
+      "uncertainties": [
+        "The preference is for stronger executable assertions visible in source; no candidate tests were executed in this review."
+      ]
+    }
+  ],
+  "limits": [
+    "Exploratory ordinal AI review with anonymized sides; it does not measure human review time or developer productivity.",
+    "Only the rubric, shared fixture and anonymized task/code/test/report files were examined. No network, label mapping, original runs or other reviewer output was accessed.",
+    "Static comparison only. The system python command resolved to an unavailable Windows launcher, so no candidate suite ran; reports' passing-test claims were not independently confirmed.",
+    "Original test_existing.py files and unchanged source files were compared by text against the fixture; no weakened existing checks were found."
+  ]
+}

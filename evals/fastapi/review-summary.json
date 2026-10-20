@@ -1,0 +1,14 @@
+[
+  {
+    "reviewer": 1,
+    "with_skill": 0,
+    "without_skill": 0,
+    "tie": 9
+  },
+  {
+    "reviewer": 2,
+    "with_skill": 2,
+    "without_skill": 1,
+    "tie": 6
+  }
+]

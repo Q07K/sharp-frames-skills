@@ -42,3 +42,10 @@ python tools/check_fixture.py --case 1 --path /absolute/path/to/candidate
 
 개선은 실패를 재현한 뒤 범용적인 지침으로 반영합니다. 평가 과제의 이름·값·정답을
 스킬 본문에 넣어 성적을 올리지 않습니다.
+
+## FastAPI 확대 비교
+
+[3개 과제 × 조건별 3회 결과](results/fastapi-2026-10-20.md)와
+[재현 가능한 코드·검사·환경](fastapi/README.md)을 추가했습니다.
+원래 평가 점수와, 채점 도구 감사 후 추가한 검사는 구분해 공개합니다.
+CI는 저장된 결과를 다시 검사하며 AI를 새로 실행하지 않습니다.

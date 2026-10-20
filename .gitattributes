@@ -1,3 +1,8 @@
 * text=auto eol=lf
 # Recorded patch context intentionally contains space-only lines.
 *.diff -whitespace
+# Preserve byte hashes of frozen evaluation inputs across platforms.
+evals/fastapi/protocol.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evals/fastapi/evaluate.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evals/fastapi/fixture-sha256.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evals/fastapi/fixture/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

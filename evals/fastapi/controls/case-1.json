@@ -1,0 +1,47 @@
+{
+  "case": 1,
+  "expectations": [
+    {
+      "text": "__main__.Quotes.test_authoritative_identity_price_and_validation",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 88, in test_authoritative_identity_price_and_validation\n    self.assertEqual(response.status_code, 200, response.text)\nAssertionError: 404 != 200 : {\"detail\":\"Not Found\"}\n"
+    },
+    {
+      "text": "__main__.Quotes.test_database_has_no_quote_side_effects",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 82, in test_database_has_no_quote_side_effects\n    self.assertEqual(response.status_code, 200, response.text)\nAssertionError: 404 != 200 : {\"detail\":\"Not Found\"}\n"
+    },
+    {
+      "text": "__main__.Quotes.test_missing_auth_and_product_coupon_errors",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 98, in test_missing_auth_and_product_coupon_errors\n    self.assertEqual(self.client.post('/quotes', headers=headers, json=body).status_code, 401)\nAssertionError: 404 != 401\n"
+    },
+    {
+      "text": "__main__.Quotes.test_policy_amounts_and_real_checkout",
+      "passed": false,
+      "evidence": "Traceback (most recent call last):\n  File \"<EVAL_ROOT>\\evaluate.py\", line 66, in test_policy_amounts_and_real_checkout\n    self.assertEqual(quoted.status_code, 200, quoted.text)\nAssertionError: 404 != 200 : {\"detail\":\"Not Found\"}\n"
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_access_boundary",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_order_policy_and_stock",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    },
+    {
+      "text": "test_existing.ExistingBehavior.test_rollback_and_validation",
+      "passed": true,
+      "evidence": "External API/SQLite assertions passed."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 4,
+    "total": 7,
+    "pass_rate": 0.42857142857142855
+  },
+  "complete_success": false
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "case": 1,
+    "repeat": 1,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 1,
+    "repeat": 1,
+    "condition": "without_skill",
+    "all_passed": true
+  },
+  {
+    "case": 1,
+    "repeat": 2,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 1,
+    "repeat": 2,
+    "condition": "without_skill",
+    "all_passed": true
+  },
+  {
+    "case": 1,
+    "repeat": 3,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 1,
+    "repeat": 3,
+    "condition": "without_skill",
+    "all_passed": true
+  },
+  {
+    "case": 2,
+    "repeat": 1,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 2,
+    "repeat": 1,
+    "condition": "without_skill",
+    "all_passed": true
+  },
+  {
+    "case": 2,
+    "repeat": 2,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 2,
+    "repeat": 2,
+    "condition": "without_skill",
+    "all_passed": true
+  },
+  {
+    "case": 2,
+    "repeat": 3,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 2,
+    "repeat": 3,
+    "condition": "without_skill",
+    "all_passed": true
+  },
+  {
+    "case": 3,
+    "repeat": 1,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 3,
+    "repeat": 1,
+    "condition": "without_skill",
+    "all_passed": true
+  },
+  {
+    "case": 3,
+    "repeat": 2,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 3,
+    "repeat": 2,
+    "condition": "without_skill",
+    "all_passed": true
+  },
+  {
+    "case": 3,
+    "repeat": 3,
+    "condition": "with_skill",
+    "all_passed": true
+  },
+  {
+    "case": 3,
+    "repeat": 3,
+    "condition": "without_skill",
+    "all_passed": true
+  }
+]

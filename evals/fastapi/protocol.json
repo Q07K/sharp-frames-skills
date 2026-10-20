@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-20",
+  "skill_commit": "19a2b7a25b191aaab892fb2c081426bba250c6ed",
+  "design": "3 cases x 3 independent repetitions x 2 conditions = 18 executions; fresh agent per execution; same inherited model/settings; no optional overrides; randomized launch order by repetition; no outcome-dependent stopping",
+  "conditions": [
+    "with_skill",
+    "without_skill"
+  ],
+  "primary": "complete external behavioral groups plus original regression tests",
+  "secondary": "blind qualitative maintainability review; candidate test counts are descriptive only",
+  "limitations": [
+    "synthetic single-stack tasks",
+    "no human review-time measurement",
+    "subagent token metrics may be unavailable",
+    "baseline instructed not to load skills despite common tool catalog",
+    "3 cases are clustered; 9 executions per condition are not 9 independent task types"
+  ],
+  "cases": [
+    {
+      "id": 1,
+      "name": "authoritative-quote",
+      "prompt": "POST /quotes를 추가해줘. 기존 POST /orders와 같은 장바구니 입력을 받아 subtotal_won, discount_won, shipping_won, total_won을 가진 JSON을 200으로 반환하면 돼. 같은 사용자·장바구니라면 실제 주문과 같은 금액이어야 하고, 요청자가 넘긴 가격·등급에 영향을 받으면 안 돼. 견적은 주문·재고·다른 DB 상태를 변경하지 않아야 해. 기존 주문의 입력 오류와 상품·쿠폰 오류 및 인증 동작도 일관되게 유지해줘. 기존 API는 유지하고 필요한 검증도 실행해줘."
+    },
+    {
+      "id": 2,
+      "name": "atomic-idempotent-cancel",
+      "prompt": "POST /orders/{order_id}/cancel을 추가해줘. 기존 주문 조회와 같은 접근 권한을 적용하고, paid 주문을 canceled로 바꾸면서 각 상품 재고를 주문 수량만큼 복구해줘. stock_movements에는 상품별 reason=cancel 기록을 남겨줘. 필수 Idempotency-Key 헤더는 1~64자의 영문·숫자·하이픈·밑줄이고 잘못되면 422야. 키는 사용자별로 구분해 cancel_requests에 결과를 기록하고, 같은 사용자·키·주문 재시도는 최초 결과 {id, status: canceled}를 200으로 돌려줘. 동일 키를 다른 주문에 쓰거나, 이미 취소된 주문을 새 키로 취소하면 409야. 동시 재시도에도 재고·이력이 한 번만 바뀌어야 하고 DB 처리 중 실패하면 주문·재고·이력·키 기록이 전부 롤백돼야 해. 기존 API는 유지하고 필요한 검증도 실행해줘."
+    },
+    {
+      "id": 3,
+      "name": "scoped-paginated-list",
+      "prompt": "GET /orders 목록 API를 추가해줘. 기존 개별 주문 조회와 같은 접근 정책으로 보이는 주문만 반환하고, status 필터(선택, paid 또는 canceled), limit(기본20, 1~100), offset(기본0, 0 이상)을 지원해줘. 응답은 {items: [{id, status, total_won}], total, limit, offset}이고 total은 권한과 status를 적용한 전체 건수야. id 내림차순으로 정렬한 다음 페이지를 잘라줘. 인증 누락은 기존처럼 401, 잘못된 필터·범위는 422로 응답해줘. 빈 페이지에서도 total은 유지해야 하고 SQL 입력으로 권한 경계를 우회할 수 없어야 해. 기존 API는 유지하고 필요한 검증도 실행해줘."
+    }
+  ]
+}

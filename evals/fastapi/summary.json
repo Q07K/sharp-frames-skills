@@ -1,0 +1,272 @@
+{
+  "design": "3 task types, each repeated 3 times per condition; same inherited model/settings",
+  "python": "3.12.14",
+  "platform": "Windows",
+  "conditions": {
+    "with_skill": {
+      "complete_successes": 9,
+      "executions": 9,
+      "cases": {
+        "1": {
+          "successes": 3,
+          "repetitions": 3
+        },
+        "2": {
+          "successes": 3,
+          "repetitions": 3
+        },
+        "3": {
+          "successes": 3,
+          "repetitions": 3
+        }
+      },
+      "time_seconds": null,
+      "tokens": null
+    },
+    "without_skill": {
+      "complete_successes": 9,
+      "executions": 9,
+      "cases": {
+        "1": {
+          "successes": 3,
+          "repetitions": 3
+        },
+        "2": {
+          "successes": 3,
+          "repetitions": 3
+        },
+        "3": {
+          "successes": 3,
+          "repetitions": 3
+        }
+      },
+      "time_seconds": null,
+      "tokens": null
+    }
+  },
+  "paired_complete_success": {
+    "with_skill_only": 0,
+    "without_skill_only": 0,
+    "both_success": 9,
+    "both_fail": 0
+  },
+  "runs": [
+    {
+      "case": 1,
+      "repeat": 1,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 1,
+      "repeat": 1,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 1,
+      "repeat": 2,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 1,
+      "repeat": 2,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 1,
+      "repeat": 3,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 1,
+      "repeat": 3,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 2,
+      "repeat": 1,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 2,
+      "repeat": 1,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 2,
+      "repeat": 2,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 2,
+      "repeat": 2,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 2,
+      "repeat": 3,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 2,
+      "repeat": 3,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 3,
+      "repeat": 1,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 3,
+      "repeat": 1,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 3,
+      "repeat": 2,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 3,
+      "repeat": 2,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 3,
+      "repeat": 3,
+      "condition": "with_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    {
+      "case": 3,
+      "repeat": 3,
+      "condition": "without_skill",
+      "complete_success": true,
+      "groups": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    }
+  ],
+  "inference": "Descriptive repeated synthetic checks; task clusters are not independent real-world samples. No general causal or productivity claim."
+}
