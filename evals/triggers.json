@@ -1,0 +1,12 @@
+[
+  {"query":"기존 주문 생성 코드를 유지하면서 결제 전 견적 API도 추가해줘. 같은 정책을 쓰게 해줘.","should_trigger":true},
+  {"query":"사용자 권한 검사 버그를 수정하고 기존 API 응답은 유지해줘.","should_trigger":true},
+  {"query":"신규 FastAPI 백엔드를 만들어줘. 상품 조회와 주문까지 실제로 동작해야 해.","should_trigger":true},
+  {"query":"이 React 검색 기능을 고쳐줘. 다른 화면에서 쓰는 검색 모듈도 있어.","should_trigger":true},
+  {"query":"중복된 환불 계산을 정리하되 기존 정산 결과는 바뀌면 안 돼.","should_trigger":true},
+  {"query":"설정값 한 군데의 오타만 수정해줘.","should_trigger":true,"note":"Lightweight path only; no architecture exercise."},
+  {"query":"FastAPI의 의존성 주입이 뭔지 예시로 설명해줘.","should_trigger":false},
+  {"query":"개발자 느낌이 나는 스킬 저장소 이름을 추천해줘.","should_trigger":false},
+  {"query":"수정하지 말고 이 모듈이 하는 일만 설명해줘.","should_trigger":false},
+  {"query":"README의 설치 명령 설명만 더 이해하기 쉽게 고쳐줘.","should_trigger":false}
+]

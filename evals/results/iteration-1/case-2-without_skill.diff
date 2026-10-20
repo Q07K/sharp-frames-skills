@@ -1,0 +1,40 @@
+diff --git a/shop/wholesale.py b/shop/wholesale.py
+index 9c88430..4666be0 100644
+--- a/shop/wholesale.py
++++ b/shop/wholesale.py
+@@ -1,4 +1,4 @@
+ def shipping_fee_won(subtotal_won: int) -> int:
+     if type(subtotal_won) is not int or subtotal_won < 0:
+         raise ValueError("invalid subtotal")
+-    return 0 if subtotal_won >= 100_000 else 5_000
++    return 0 if subtotal_won >= 120_000 else 6_000
+diff --git a/tests/test_existing.py b/tests/test_existing.py
+index ded0a8a..1660ffb 100644
+--- a/tests/test_existing.py
++++ b/tests/test_existing.py
+@@ -23,8 +23,23 @@ class ExistingBehavior(unittest.TestCase):
+             calculate_totals([], "regular")
+ 
+     def test_wholesale_boundary(self):
+-        self.assertEqual(shipping_fee_won(99_999), 5_000)
+-        self.assertEqual(shipping_fee_won(100_000), 0)
++        self.assertEqual(shipping_fee_won(0), 6_000)
++        self.assertEqual(shipping_fee_won(99_999), 6_000)
++        self.assertEqual(shipping_fee_won(100_000), 6_000)
++        self.assertEqual(shipping_fee_won(119_999), 6_000)
++        self.assertEqual(shipping_fee_won(120_000), 0)
++        self.assertEqual(shipping_fee_won(120_001), 0)
++
++    def test_wholesale_validation_unchanged(self):
++        for subtotal in (-1, True, False, 120_000.0, "120000", None):
++            with self.subTest(subtotal=subtotal):
++                with self.assertRaisesRegex(ValueError, "^invalid subtotal$"):
++                    shipping_fee_won(subtotal)
++
++    def test_retail_shipping_policy_unchanged(self):
++        self.assertEqual(calculate_totals([Line(49_999, 1)], "regular").shipping_won, 3_000)
++        self.assertEqual(calculate_totals([Line(50_000, 1)], "regular").shipping_won, 0)
++        self.assertEqual(calculate_totals([Line(50_000, 1)], "regular", True).shipping_won, 3_000)
+ 
+ 
+ if __name__ == "__main__":

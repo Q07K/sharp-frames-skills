@@ -1,0 +1,86 @@
+diff --git a/shop/orders.py b/shop/orders.py
+index 35da894..48c5284 100644
+--- a/shop/orders.py
++++ b/shop/orders.py
+@@ -12,6 +12,14 @@ class OrderStore:
+         return len(self.orders)
+ 
+ 
++def preview_order(lines: list[Line], member: str, use_coupon: bool = False) -> dict[str, int]:
++    """Return order amounts in won without creating or saving an order.
++
++    Uses the same validation and pricing rules as place_order.
++    """
++    return asdict(calculate_totals(lines, member, use_coupon))
++
++
+ def place_order(store: OrderStore, lines: list[Line], member: str, use_coupon: bool = False) -> dict:
+     amounts = asdict(calculate_totals(lines, member, use_coupon))
+     order_id = store.add(amounts)
+
+Added file: tests/test_preview.py
+import unittest
+from unittest.mock import patch
+
+from shop.orders import OrderStore, place_order, preview_order
+from shop.pricing import Line
+
+
+class PreviewOrderTests(unittest.TestCase):
+    def test_expected_amounts_and_order_parity(self):
+        cases = [
+            ([Line(49_999, 1)], "regular", False, (49_999, 0, 3_000, 52_999)),
+            ([Line(50_000, 1)], "regular", False, (50_000, 0, 0, 50_000)),
+            ([Line(60_000, 1)], "vip", True, (60_000, 11_000, 3_000, 52_000)),
+            ([Line(55_000, 1)], "regular", True, (55_000, 5_000, 0, 50_000)),
+            ([Line(4_000, 1)], "regular", True, (4_000, 4_000, 3_000, 3_000)),
+            ([Line(0, 2)], "vip", True, (0, 0, 3_000, 3_000)),
+            ([Line(10_001, 3), Line(7, 2)], "vip", False, (30_017, 3_002, 3_000, 30_015)),
+        ]
+        for lines, member, coupon, amounts in cases:
+            with self.subTest(lines=lines, member=member, coupon=coupon):
+                expected = dict(zip(
+                    ("subtotal_won", "discount_won", "shipping_won", "total_won"), amounts
+                ))
+                preview = preview_order(lines, member, coupon)
+                self.assertEqual(preview, expected)
+                store = OrderStore()
+                placed = place_order(store, lines, member, coupon)
+                self.assertEqual(placed, {"id": 1, **preview})
+                self.assertEqual(store.orders, [preview])
+
+    def test_preview_has_no_creation_or_storage_effects(self):
+        lines = [Line(50_000, 1)]
+        original_lines = lines.copy()
+        with patch("shop.orders.OrderStore") as store, patch("shop.orders.place_order") as place:
+            first = preview_order(lines, "regular")
+            first["total_won"] = -1
+            second = preview_order(lines, "regular")
+        store.assert_not_called()
+        store.return_value.add.assert_not_called()
+        place.assert_not_called()
+        self.assertEqual(lines, original_lines)
+        self.assertEqual(second["total_won"], 50_000)
+
+    def test_default_coupon_is_disabled(self):
+        self.assertEqual(preview_order([Line(50_000, 1)], "regular")["discount_won"], 0)
+
+    def test_validation_matches_orders(self):
+        cases = [
+            ([], "regular", "empty basket"),
+            ([Line(1, 1)], "unknown", "unknown member"),
+            ([Line(-1, 1)], "regular", "invalid price"),
+            ([Line(True, 1)], "regular", "invalid price"),
+            ([Line(1.5, 1)], "regular", "invalid price"),
+            ([Line(1, 0)], "regular", "invalid quantity"),
+            ([Line(1, True)], "regular", "invalid quantity"),
+            ([Line(1, 1.5)], "regular", "invalid quantity"),
+        ]
+        for lines, member, message in cases:
+            with self.subTest(lines=lines, member=member):
+                with self.assertRaisesRegex(ValueError, f"^{message}$"):
+                    preview_order(lines, member)
+                store = OrderStore()
+                with self.assertRaisesRegex(ValueError, f"^{message}$"):
+                    place_order(store, lines, member)
+                self.assertEqual(store.orders, [])

@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Recorded patch context intentionally contains space-only lines.
+*.diff -whitespace

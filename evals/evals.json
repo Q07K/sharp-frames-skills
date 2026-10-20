@@ -1,0 +1,31 @@
+{
+  "skill_name": "maintainable-development",
+  "evals": [
+    {
+      "id": 1,
+      "name": "reuse-existing-price-policy",
+      "prompt": "현재 shop 패키지에 주문 전 예상 금액을 조회하는 서비스 함수를 추가해줘. HTTP 프레임워크 도입은 필요 없어. shop.orders.preview_order(lines, member, use_coupon=False)로 호출하고 subtotal_won, discount_won, shipping_won, total_won을 가진 dict를 반환하면 돼. 실제 주문과 같은 금액이 나와야 하고 주문 생성·저장은 일어나면 안 돼. 기존 주문 동작은 유지해줘.",
+      "expected_output": "Integrated preview function, preserved order behavior, reused applicable pricing policy, relevant verification and truthful concise handoff.",
+      "files": ["evals/fixtures/shop"],
+      "assertions": [
+        "Preview returns required fields and policy-correct boundary amounts.",
+        "Preview and real order share the existing authoritative pricing policy.",
+        "Existing order and wholesale behavior remain intact.",
+        "No HTTP framework, unrelated architecture, or weakened tests are introduced."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "independent-policy-change",
+      "prompt": "기업구매 배송 정책만 수정해줘. shop.wholesale.shipping_fee_won의 무료 배송 기준은 기존 100,000원에서 120,000원으로 올리고, 유료 배송비는 5,000원에서 6,000원으로 바꿔줘. 일반 쇼핑몰 주문 계산과 함수의 오류 동작은 그대로 유지해야 해.",
+      "expected_output": "Focused wholesale policy update, exact boundaries and invalid-input behavior verified, retail pricing unchanged, no forced cross-domain abstraction.",
+      "files": ["evals/fixtures/shop"],
+      "assertions": [
+        "Wholesale fees are 6000 below 120000 and zero at or above the threshold.",
+        "Invalid wholesale input retains ValueError behavior.",
+        "Retail policy and normal order behavior remain intact.",
+        "Changes stay proportional and do not create a universal shipping framework."
+      ]
+    }
+  ]
+}

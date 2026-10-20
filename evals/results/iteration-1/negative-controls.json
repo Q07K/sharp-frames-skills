@@ -1,0 +1,56 @@
+[
+  {
+    "case": 1,
+    "passed": false,
+    "checks": [
+      {
+        "name": "retail_and_order_behavior",
+        "passed": true
+      },
+      {
+        "name": "preview_boundary_amounts",
+        "passed": false,
+        "error": "module 'shop.orders' has no attribute 'preview_order'"
+      },
+      {
+        "name": "preview_does_not_create_orders",
+        "passed": false,
+        "error": "module 'shop.orders' has no attribute 'preview_order'"
+      },
+      {
+        "name": "existing_pricing_policy_is_used",
+        "passed": false,
+        "error": "module 'shop.orders' has no attribute 'preview_order'"
+      },
+      {
+        "name": "candidate_tests",
+        "passed": true,
+        "tests_run": 5
+      }
+    ]
+  },
+  {
+    "case": 2,
+    "passed": false,
+    "checks": [
+      {
+        "name": "retail_and_order_behavior",
+        "passed": true
+      },
+      {
+        "name": "wholesale_new_boundaries",
+        "passed": false,
+        "error": "Expected 6000, got 5000"
+      },
+      {
+        "name": "wholesale_invalid_input_preserved",
+        "passed": true
+      },
+      {
+        "name": "candidate_tests",
+        "passed": true,
+        "tests_run": 5
+      }
+    ]
+  }
+]

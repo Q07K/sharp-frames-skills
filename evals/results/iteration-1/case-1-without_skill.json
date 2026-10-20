@@ -1,0 +1,28 @@
+{
+  "case": 1,
+  "passed": true,
+  "checks": [
+    {
+      "name": "retail_and_order_behavior",
+      "passed": true
+    },
+    {
+      "name": "preview_boundary_amounts",
+      "passed": true
+    },
+    {
+      "name": "preview_does_not_create_orders",
+      "passed": true
+    },
+    {
+      "name": "existing_pricing_policy_is_used",
+      "passed": true
+    },
+    {
+      "name": "candidate_tests",
+      "passed": true,
+      "tests_run": 8
+    }
+  ],
+  "condition": "without_skill"
+}
