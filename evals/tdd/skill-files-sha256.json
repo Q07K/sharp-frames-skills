@@ -1,0 +1,15 @@
+{
+  "normalization": "UTF-8 text, universal newlines converted to LF",
+  "files": {
+    "skills/maintainable-development/agents/openai.yaml": "37ad88741e2a99a98fcc5304c253ec888f3f3600f80fed34f474ae558a646dae",
+    "skills/maintainable-development/references/design.md": "8155a74e688c49aca4c202d1d80c9b7d1f4e32cdd80ef0e7d64eb8b675a7834e",
+    "skills/maintainable-development/references/python-fastapi.md": "89ad35e70500e80db05c8b6b44ba0317459ce7bc9b2f6b8da31b5ec4aaaa5191",
+    "skills/maintainable-development/references/verification.md": "4d5a2af5ecf94a96c70e9b7cbae9c0c6d4e35bf20aae76cec4526042e735325d",
+    "skills/maintainable-development/SKILL.md": "469df4a3d0b387bb8da884c686a870e573f8265897f01b6e11cbcdcadac0348e",
+    "skills/sharp-frames-review/agents/openai.yaml": "ac00c50f4a7b8c5ec19babdd575b1048500c8d6abdb00b47221bfaa80dd8424d",
+    "skills/sharp-frames-review/SKILL.md": "1753c579e34be9324909fc73e0a9676011a6dd68caf6c6115fced839c4d8a289",
+    "skills/sharp-frames-test/agents/openai.yaml": "43ff77a4bc206c989d335d0a3fc767736d807cbb6959c4764c667e9f114b3bff",
+    "skills/sharp-frames-test/references/cases.md": "32d49452d2c91dd4d324ca67677c210bc6347d4a345bc1cb1b3caa590561f60d",
+    "skills/sharp-frames-test/SKILL.md": "1dc8b8e5c2575d04501bc0d5edce5a918409ecebe2ba1e3ce80a531342d72862"
+  }
+}

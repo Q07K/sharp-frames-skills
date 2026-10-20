@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-20",
+  "method": "Three fresh independent agents, explicit skill invocation, no baseline condition or host routing test. Supplied raw input and skill, not expected answer or grader variants.",
+  "cases": [
+    {
+      "id": "feature",
+      "skill": "maintainable-development",
+      "prompt": "README의 계약대로 주문 취소 API를 구현해줘. 기존 조회 동작을 유지하고 실제 고객·다른 고객·지원 담당자의 사용 흐름에서 재고와 주문 상태까지 검증해줘. 테스트 케이스도 관리할 수 있게 정리해줘.",
+      "scope": "implementation, tests and case records in isolated input"
+    },
+    {
+      "id": "test-only",
+      "skill": "sharp-frames-test",
+      "prompt": "README 기준으로 주문 취소 테스트가 실제 사용자 흐름까지 검증하는지 보강해줘. 역할·소유권·주문 상태·반복 실행·예외와 요청 뒤 상태를 확인하고 케이스를 관리할 자료도 남겨줘. 이번에는 테스트만 추가·수정하고 제품 코드는 고치지 마. 실패하면 원인과 남은 문제를 알려줘.",
+      "scope": "tests and case records only; product remains unchanged"
+    },
+    {
+      "id": "review",
+      "skill": "sharp-frames-review",
+      "prompt": "이 변경을 리뷰해줘. 작성자는 테스트가 초록이라 문제없다고 하는데 실제 계약과 테스트를 함께 보고 판단해줘. 코드는 바꾸지 마.",
+      "scope": "read-only review of uncommitted and untracked changes"
+    }
+  ]
+}

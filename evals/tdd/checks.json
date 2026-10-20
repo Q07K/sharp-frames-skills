@@ -1,0 +1,104 @@
+{
+  "replay_observations": {
+    "feature_red": {
+      "collected": 10,
+      "failures": 11,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "successful": false
+    },
+    "feature_green": {
+      "collected": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "successful": true
+    },
+    "feature_external_contract": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "successful": true
+    },
+    "test_only_original": {
+      "collected": 13,
+      "failures": 6,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "successful": false
+    },
+    "test_only_correct": {
+      "collected": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "successful": true
+    },
+    "test_only_mutant_owner": {
+      "collected": 13,
+      "failures": 6,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "successful": false
+    },
+    "test_only_mutant_repeat": {
+      "collected": 13,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "successful": false
+    },
+    "test_only_mutant_shipped": {
+      "collected": 13,
+      "failures": 4,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "successful": false
+    },
+    "review_green_suite": {
+      "collected": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "successful": true
+    },
+    "review_external_contract": {
+      "tests": 7,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "successful": false
+    }
+  },
+  "manual_review": {
+    "feature": "Actual trace and saved snapshots show baseline read checks, relevant failing behavior tests and green implementation. Replay verifies byte-identical red/green tests and original read tests, plus independent contract flows. Case matrix connects role/state/response/storage obligations.",
+    "test-only": "Kept product and existing reads unchanged; added cases/matrix and reported ownership failures instead of changing oracle or product. Original bad product fails; normal reference passes; three injected variants fail without setup errors/skips.",
+    "review": "Reproduced reachable unauthorized cancellation and stock mutation despite a successful suite. Identified skipped ownership case, broad 200/409/500 tolerance and duplicated test collection, without treating coverage gaps as proven additional product bugs."
+  },
+  "limits": [
+    "Three single synthetic tasks, no controlled skill/no-skill uplift comparison.",
+    "External checks/variants authored after task dispatch and before inspecting submissions; not a preregistered study.",
+    "Replay confirms source/test sensitivity, not independently authenticated execution chronology. Agent trace and snapshot logs remain separate evidence.",
+    "Writer was instructed not to access sibling/grader paths; filesystem access was not an adversarial security boundary.",
+    "API/SQLite workflows only; production auth, browser, payments, all concurrency schedules and deployment remain outside scope.",
+    "No real host routing test, token/time measurements or production quality claim."
+  ],
+  "causal_quality_uplift_established": false
+}

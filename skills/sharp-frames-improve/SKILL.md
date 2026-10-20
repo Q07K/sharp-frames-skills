@@ -22,6 +22,14 @@ Record meaningful before-state evidence before changing it; valid existing
 evidence can be reused with its revision and input identity. A preexisting failing
 check stays visible rather than becoming a silently accepted new baseline.
 
+For behavior corrections, reproduce the requirement violation with a focused
+test before changing implementation, observe the relevant failure, make the same
+case pass, then refactor and run affected regressions. Setup errors are blocked
+checks, not reproduced bugs. Pure refactors can start and stay green. Include
+important role/state boundaries and connected persona actions with final-state
+checks when the selected obligation affects a workflow. Extend established case
+records for nontrivial changes; do not create an unrelated reporting system.
+
 ## Make a coherent correction
 
 Find existing policy owners and compatible utilities before introducing code.
@@ -40,7 +48,10 @@ consumers unless the requested correction intentionally changes them.
 
 Run checks capable of exposing the changed failure, boundary or contract and
 affected caller regressions. Expectations come from requirements, not a copy of
-the new algorithm. Do not weaken checks to make them pass. A small reversible
+the new algorithm. Do not weaken checks to make them pass. Explain changes to
+existing expectations, fixtures, skips, snapshots, mocks and test collection with
+independent contract evidence and retained regression coverage. An implementation
+failure alone is not grounds for changing its test oracle. A small reversible
 edit does not automatically need new tests or a full repository suite.
 
 Review the final diff for scope, missed callers, duplicated policy, unnecessary

@@ -34,6 +34,13 @@ alone does not justify merging independent policies. Identify tests that could
 pass while the changed requirement is wrong. Follow project lint/type rules;
 do not turn personal formatting preferences into defects.
 
+Inspect test changes for removed assertions/cases, wider tolerances, skipped or
+uncollected checks, regenerated snapshots and mocks that bypass the behavior.
+Compare changed expectations to the requested contract rather than treating a
+green suite or a higher case count as proof. Look for meaningful role/ownership,
+state and persona workflow gaps; missing coverage alone is not a proven bug.
+Distinguish observed TDD execution evidence from a claimed chronology.
+
 Before reporting a finding, verify its reachable trigger and the observed or
 reasoned consequence. Check the callee and safeguards before alleging a missing
 check. Read history when needed to distinguish introduced regressions from older

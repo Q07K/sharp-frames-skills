@@ -32,8 +32,14 @@ For each meaningful increment, specify:
 - The behavior or contract it delivers and what must remain compatible.
 - Existing code to reuse or extend, proposed changes, affected callers and data.
 - Dependencies on other increments and the reason for the ordering.
-- An observable completion check derived from the requested behavior, with
-  relevant normal, failure and boundary cases and the actual project commands.
+- Requirement-derived cases before implementation: relevant boundaries, actual
+  roles/ownership and state transitions, with the actual project commands.
+- A test-first red/green/refactor sequence for changed behavior and a small set
+  of connected persona workflows checking responses and final state. Keep a
+  behavior-preserving refactor green rather than inventing a red stage.
+- Case inventory/test locations and material existing test expectation, fixture,
+  skip or collection changes, with a contract-based justification and coverage
+  retained. Distinguish cases to write from checks actually executed.
 
 Prefer increments that can be verified together over an arbitrary layer-by-layer
 list. Describe risky algorithm or schema choices where they affect correctness;

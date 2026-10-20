@@ -65,6 +65,13 @@ version-specific APIs. Test actual handlers with suitable dependency overrides,
 keeping internal policy real. Use a test DB capable of exercising the relevant
 constraints: an in-memory fake cannot prove production transaction guarantees.
 
+Use the real test client/ASGI path for important multi-request persona workflows,
+with trusted test identities, isolated state and relevant follow-up reads. Check
+authorization and persisted side effects, not just HTTP status. Dependency overrides
+may supply test auth or an external adapter; do not override away the policy or DB
+constraint the test claims to verify. Test-client flows do not prove browser UX,
+production isolation levels or live provider behavior.
+
 For money, establish unit/currency/rounding and check thresholds. Avoid unsuitable
 binary float arithmetic. Never import a discount, tax, shipping, or auth policy
 from an illustrative example as if it were the project's requirement.
