@@ -1,0 +1,45 @@
+{
+  "kind": "functional-forward-tests",
+  "quality_uplift_comparison": false,
+  "cases": [
+    {
+      "id": 1,
+      "name": "review-map",
+      "skills": [
+        "sharp-frames-review",
+        "sharp-frames-map"
+      ],
+      "prompt": "현재 미커밋 변경을 수정 없이 리뷰하고, 주문 조회·내보내기 흐름과 재사용 모듈을 설명한다.",
+      "observed": "공개 내보내기 경로의 소유권 우회를 재현하고 access.owned_order를 정책 소유자로 식별했다. 소스·인덱스·이력을 보존했다."
+    },
+    {
+      "id": 2,
+      "name": "debt-gain",
+      "skills": [
+        "sharp-frames-debt",
+        "sharp-frames-gain"
+      ],
+      "prompt": "HEAD 이후의 신규·잔존·해소 부채와 기존 대장을 비교하고 제공된 before/after 관찰값을 설명한다.",
+      "observed": "주석 삭제 뒤에도 DEBT-001을 유지하고 새 오류 은폐를 활성 결함으로 분류했다. 쿼리 -40%, 오류 +1을 구분하고 단위 불일치·비용 누락 비교를 보류했다."
+    },
+    {
+      "id": 3,
+      "name": "help-audit",
+      "skills": [
+        "sharp-frames-help",
+        "sharp-frames-audit"
+      ],
+      "prompt": "명령과 수정 범위를 안내한 뒤, 예제 전체를 수정 없이 진단하고 조사 범위·우선순위를 제시한다.",
+      "observed": "정확한 8개 기능과 수정 경계를 안내하고, 권한 누락과 검사 공백을 조사 범위·근거와 함께 보고했다. 소스·인덱스·이력을 보존했다."
+    },
+    {
+      "id": 4,
+      "name": "improve",
+      "skills": [
+        "sharp-frames-improve"
+      ],
+      "prompt": "앞선 감사 보고서의 우선 권한 문제를 고치고 기존 조회·CLI를 보존하며 검증·부채·효과를 정리한다.",
+      "observed": "기존 권한 함수를 재사용해 타인·혼합 주문을 거부했다. 독립 회귀 검사가 원본에서는 실패하고 수정 후 통과했고 기존 검사도 유지했다."
+    }
+  ]
+}

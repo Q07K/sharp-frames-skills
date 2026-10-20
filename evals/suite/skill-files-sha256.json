@@ -1,0 +1,28 @@
+{
+  "normalization": "UTF-8 text with LF newlines",
+  "files": {
+    "skills/maintainable-development/SKILL.md": "785538405424f09211b0adc5089e29085243a86fbdfa6cdf35372229d60209da",
+    "skills/sharp-frames-audit/SKILL.md": "ec5c7fdfe0d99ff220196a1ea06d702471d18352f5744fd730b4a9303d978b84",
+    "skills/sharp-frames-debt/SKILL.md": "9b41a7e54962f4fc2a4f446c275302786579baec469c7f71af0ca0f30d06c1e4",
+    "skills/sharp-frames-gain/SKILL.md": "b0b7eefb994ad7b0dd9e8cd6e2ae14520aa38527862ae1c24d34deaf2518d643",
+    "skills/sharp-frames-help/SKILL.md": "65c4d8521f05d9b9b25f46142fccb5cede80476ed6e3f99034740a430d5acf55",
+    "skills/sharp-frames-improve/SKILL.md": "90bf24f4e3719d9c4c5619b23cb1d8e067cc64066d065f5d53a6933760b9ace3",
+    "skills/sharp-frames-map/SKILL.md": "f5d6eb734a8c23c8576d3fe1d9c56ffc1d04423918d8920c19b20384a2d739aa",
+    "skills/sharp-frames-review/SKILL.md": "a562e7a4a39a0950225177ffda6022ddb59923bb9ef81e44db718b898bd17f18",
+    "skills/maintainable-development/agents/openai.yaml": "37ad88741e2a99a98fcc5304c253ec888f3f3600f80fed34f474ae558a646dae",
+    "skills/maintainable-development/references/design.md": "8155a74e688c49aca4c202d1d80c9b7d1f4e32cdd80ef0e7d64eb8b675a7834e",
+    "skills/maintainable-development/references/python-fastapi.md": "92e71ebe4dd5b03e9b73d379a520e33989afa5cba38f456e2d0716310cea252c",
+    "skills/maintainable-development/references/verification.md": "fe5946ff32ca63a2f5fcd6d6975a48a2af7cb3891b090764885ad3a3c261103d",
+    "skills/sharp-frames-audit/agents/openai.yaml": "bd6416658eb657f3db446ca1dfbcbd335d53b8ee21f62c707ac13db963f55ba0",
+    "skills/sharp-frames-debt/agents/openai.yaml": "916b31b35a3062b4b143a4caeca51f71566a568f73fad0062f7e11e20281a23d",
+    "skills/sharp-frames-debt/scripts/scan_debt.py": "ddf7dbaeb631bf10f7fae4f7bae839b25ac390805ce2f84f361563cb75a5602e",
+    "skills/sharp-frames-gain/agents/openai.yaml": "c6f8c3abd6d8e642ac3ed0c67726b3bdb8803d53d42a08aa5f2a8908d30836be",
+    "skills/sharp-frames-gain/references/measurements.md": "bfc86918b73bd6c0ac5b25c942e108c0fcbccaa38fecfcf26a24d6ca93cfcfdc",
+    "skills/sharp-frames-gain/scripts/compare_metrics.py": "73c256d6f48d1a167d607664fbc116c10c10369a02443196f27850fc3a5fd49a",
+    "skills/sharp-frames-help/agents/openai.yaml": "e3f65d05ca66f13ab73608d72806d3324b84d917ced061d0d7e3ba39da68a8ef",
+    "skills/sharp-frames-help/references/catalog.json": "41ba7f07582e01f4bffbb4c5c557bce133f4ce47ca80b23c7f5ea94b43ff1d55",
+    "skills/sharp-frames-improve/agents/openai.yaml": "84bb6e35b1c66e5d1ace1771d7ae2d4a73b11444d64c757e2bc712de5001ab72",
+    "skills/sharp-frames-map/agents/openai.yaml": "b7efc4d7dcb69066a0d7cdb20ffd5dd4386f7d346effb2a889a6d6259aff29ab",
+    "skills/sharp-frames-review/agents/openai.yaml": "ac00c50f4a7b8c5ec19babdd575b1048500c8d6abdb00b47221bfaa80dd8424d"
+  }
+}

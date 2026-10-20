@@ -8,6 +8,8 @@ import sys
 
 import yaml
 
+from render_catalog import END, START, table
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -34,8 +36,26 @@ def main() -> None:
         check("[TODO:" not in content, "Unfinished initializer placeholder")
         ui = yaml.safe_load((path.parent / "agents/openai.yaml").read_text(encoding="utf-8"))
         check(isinstance(ui, dict), "UI metadata must be a mapping")
+        interface = ui.get("interface", {})
+        check(isinstance(interface.get("display_name"), str), "Missing skill display name")
+        short = interface.get("short_description", "")
+        check(isinstance(short, str) and 25 <= len(short) <= 64, "Invalid short UI description")
         policy = ui.get("policy", {})
         check(policy.get("allow_implicit_invocation", True) is True, "Automatic discovery unexpectedly disabled")
+
+    catalog = json.loads((ROOT / "skills/sharp-frames-help/references/catalog.json").read_text(encoding="utf-8"))
+    commands = catalog["commands"]
+    names = [c["name"] for c in commands]
+    check(len(names) == len(set(names)), "Duplicate command catalog entry")
+    check(set(names) == {p.parent.name for p in skills}, "Skill catalog does not match distributed folders")
+    for command in commands:
+        check(isinstance(command["edits_source"], bool), "Command edit behavior must be explicit")
+        check(command["purpose_ko"] and "$" + command["name"] in command["example"], "Incomplete command example")
+    for document in (ROOT / "README.md", ROOT / "docs/commands.md"):
+        content = document.read_text(encoding="utf-8")
+        check(content.count(START) == 1 and content.count(END) == 1, "Missing catalog marker pair")
+        rendered = content.split(START)[1].split(END)[0].strip()
+        check(rendered == table(), f"Stale command table: {document}; run tools/render_catalog.py --write")
 
     for path in ROOT.rglob("*.md"):
         if ".git" in path.parts:

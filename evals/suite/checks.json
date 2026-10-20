@@ -1,0 +1,30 @@
+[
+  {
+    "case": "review-map",
+    "source_index_history_unchanged": true,
+    "verification": "Full input-file hash comparison, file-set comparison, empty staged diff and unchanged single-commit history."
+  },
+  {
+    "case": "debt-gain",
+    "source_index_history_unchanged": true,
+    "verification": "Full input-file hash comparison, file-set comparison, empty staged diff and unchanged single-commit history."
+  },
+  {
+    "case": "help-audit",
+    "source_index_history_unchanged": true,
+    "verification": "Full input-file hash comparison, file-set comparison, empty staged diff and unchanged single-commit history."
+  },
+  {
+    "case": "improve",
+    "original_security_oracle_failed": true,
+    "after_security_oracle_passed": true,
+    "candidate_suite_passed": true,
+    "original_checks_retained": true,
+    "verification": "Independent CLI ownership oracle before/after plus candidate suite and original-check inspection."
+  },
+  {
+    "case": "gain-comparison",
+    "observations_and_limits_correct": true,
+    "verification": "Helper JSON independently checked against provided values, missing data, mismatched units and zero baseline."
+  }
+]

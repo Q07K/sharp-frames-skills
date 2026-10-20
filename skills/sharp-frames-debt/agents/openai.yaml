@@ -1,0 +1,3 @@
+interface:
+  display_name: "Sharp Frames · Debt"
+  short_description: "Track introduced, existing, and resolved technical debt"

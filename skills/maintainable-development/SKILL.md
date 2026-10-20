@@ -140,6 +140,12 @@ checks actually run and their results; material unverified behavior. Point to re
 files/symbols where useful. Distinguish passed, failed, skipped, and not-run checks.
 A command in a plan is not execution evidence.
 
+Name material debt introduced, resolved or left in place by this change, with
+reason and revisit trigger when relevant. Do not create a ledger automatically.
+Show observed effects separately from expected maintenance benefits; numeric
+improvement claims require a comparable baseline. Do not run a whole-project
+audit as an automatic part of each feature.
+
 Do not create a stack of reports by default. Update affected contracts and keep
 consequential rationale in the repository's established place. Preserve unrelated
 work. This skill grants no additional permission to publish, deploy, or alter
