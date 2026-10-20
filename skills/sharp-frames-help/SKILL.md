@@ -20,7 +20,10 @@ explicit `$skill-name` examples are the direct Codex form used by this package.
 Do not promise slash-menu registration, persistent always-on activation, hooks,
 status panels or telemetry without an actual corresponding host adapter.
 
-Route by intent: change implementation, review a change, assess whole-project
+Route by intent: explore what to build (brainstorm), sequence a substantial change
+(plan), evaluate dependency choices with current evidence (versions), implement a
+clear feature (maintainable-development), review a change, assess whole-project
 risks, explain flows/reuse candidates, account for debt, or explain improvement
-effects. Listing commands does not invoke them. A request to review/audit/debt/gain
-or map keeps implementation unchanged; applying fixes is a separate user intent.
+effects. Listing commands does not invoke them. A request for review, audit, debt,
+gain, map, brainstorm, plan or versions alone keeps implementation unchanged;
+applying changes is a separate user intent.

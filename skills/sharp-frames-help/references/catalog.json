@@ -8,6 +8,24 @@
       "example": "$maintainable-development 기존 주문 계산을 재사용해 견적 기능을 추가해줘."
     },
     {
+      "name": "sharp-frames-brainstorm",
+      "purpose_ko": "기능 목표·대안·범위·수용 기준 구체화",
+      "edits_source": false,
+      "example": "$sharp-frames-brainstorm 재주문 기능의 대안을 기존 장바구니 흐름과 비교해줘."
+    },
+    {
+      "name": "sharp-frames-plan",
+      "purpose_ko": "재사용·변경 순서·검증·마이그레이션 계획",
+      "edits_source": false,
+      "example": "$sharp-frames-plan 견적 저장 기능을 기존 계산을 활용해 구현할 계획을 세워줘."
+    },
+    {
+      "name": "sharp-frames-versions",
+      "purpose_ko": "최신 공식·커뮤니티 근거로 버전 유지·업데이트 영향 판단",
+      "edits_source": false,
+      "example": "$sharp-frames-versions FastAPI와 Pydantic의 현재 버전을 유지할지 조사하고 수정 범위와 서비스 효과를 비교해줘."
+    },
+    {
       "name": "sharp-frames-review",
       "purpose_ko": "변경 diff·커밋·브랜치·PR 리뷰",
       "edits_source": false,

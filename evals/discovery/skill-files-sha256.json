@@ -1,0 +1,12 @@
+{
+  "normalization": "UTF-8 text, universal newlines converted to LF",
+  "files": {
+    "skills/sharp-frames-brainstorm/agents/openai.yaml": "b28f680f1ea94a90d9acc75b13438b9959a11063c0f4b5d6f9bcaffc0f79d752",
+    "skills/sharp-frames-brainstorm/SKILL.md": "80179a899362b141c0f4f3a4e10e2841f0a3af80fc131bd3ab57aa6c3ffda987",
+    "skills/sharp-frames-plan/agents/openai.yaml": "e0e070e722ddecf43b6bbe5a214554f69f84ee484c388a79a27945121ef0eadc",
+    "skills/sharp-frames-plan/SKILL.md": "bf2fb8f1171df8f207e51bf76a14166e50a8097d5fe8ce809fcbcc4c196b62c8",
+    "skills/sharp-frames-versions/agents/openai.yaml": "c3cdac07d462ed098a38ab02a53c9103f6bdd28a30b82d5a959762728b175b83",
+    "skills/sharp-frames-versions/references/assessment.md": "1a5d2737704f41575893b39d72244ca6a56d43b96424bfb936cd88be067f878e",
+    "skills/sharp-frames-versions/SKILL.md": "53cda90e36b6a26f6b9af0c1f364dda155bf48fa37807349f53f911467b947ce"
+  }
+}

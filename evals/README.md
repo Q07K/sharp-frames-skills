@@ -49,3 +49,9 @@ python tools/check_fixture.py --case 1 --path /absolute/path/to/candidate
 [재현 가능한 코드·검사·환경](fastapi/README.md)을 추가했습니다.
 원래 평가 점수와, 채점 도구 감사 후 추가한 검사는 구분해 공개합니다.
 CI는 저장된 결과를 다시 검사하며 AI를 새로 실행하지 않습니다.
+
+## 기능별 명령의 수용 검사
+
+[리뷰·진단·부채·효과 등 초기 명령](suite/README.md)과
+[기능 탐색·계획·버전 검토](discovery/README.md)는 작은 독립 입력에서 요청 수행과
+수정 경계를 확인합니다. 초기 구현 스킬의 비교 실험과 별도로 해석해야 합니다.

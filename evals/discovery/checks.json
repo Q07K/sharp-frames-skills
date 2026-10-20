@@ -1,0 +1,87 @@
+{
+  "checks": [
+    {
+      "case": "brainstorm",
+      "input_file_set_and_sha256_preserved": true,
+      "input_hashes": {
+        "README.md": "b5c8e53e61456a2fe25a1544a4ad243fcdcfa06550a0a30ebeb8692a67bcdf5f",
+        "shop/cart.py": "4e7f7135de091f4ad07f922283b2097f7d08ec70cfb9803f5e7d042be3320598",
+        "shop/checkout.py": "04757e1de3019dc9c97448064a71a2b176efb48348f73a355fb888de8d673686",
+        "shop/orders.py": "e275dd2d14fa54c9c7956b8f2b4ba1ed0294a3dc4968c6ae6a7cf393c86e9785",
+        "shop/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/test_cart.py": "0c0e1842c1a74ba38f50ea834c163d3d4f823563cc40b0cc8d9326d572ec4d7f"
+      },
+      "review_result": "accepted_with_stated_limits",
+      "manual_observations": [
+        "Compared cart review, checkout preview and keeping current behavior against user confirmation constraints.",
+        "Identified quote_items/preview and owned_order as existing reuse points; did not invent an existing cart UI/storage.",
+        "Distinguished proposed cart merge policy and its ownership from inspected facts; acceptance criteria include current price, unavailable items and original state."
+      ]
+    },
+    {
+      "case": "plan",
+      "input_file_set_and_sha256_preserved": true,
+      "input_hashes": {
+        "README.md": "b5c8e53e61456a2fe25a1544a4ad243fcdcfa06550a0a30ebeb8692a67bcdf5f",
+        "shop/cart.py": "4e7f7135de091f4ad07f922283b2097f7d08ec70cfb9803f5e7d042be3320598",
+        "shop/checkout.py": "04757e1de3019dc9c97448064a71a2b176efb48348f73a355fb888de8d673686",
+        "shop/orders.py": "e275dd2d14fa54c9c7956b8f2b4ba1ed0294a3dc4968c6ae6a7cf393c86e9785",
+        "shop/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/test_cart.py": "0c0e1842c1a74ba38f50ea834c163d3d4f823563cc40b0cc8d9326d572ec4d7f"
+      },
+      "review_result": "accepted_with_stated_limits",
+      "manual_observations": [
+        "Traced ownership check before item/catalog access and reuse of checkout.preview/quote_items.",
+        "Specified proposed new composition entry point, contracts and test batches without implementing; missing order schema and UI/auth are explicit.",
+        "Separated planned regression checks from actual Python launcher failure; no claim that implementation or tests passed."
+      ]
+    },
+    {
+      "case": "versions",
+      "input_file_set_and_sha256_preserved": true,
+      "input_hashes": {
+        "app.py": "d0a69bdcd0e59fb2458bdfb48d01c970b1e511a58a120613a2c8571979fffb45",
+        "Dockerfile": "d0511107cf1d9cb192baf150115ce18b821931b23207439859c519ba9819ea30",
+        "README.md": "861d861c24eaa9c5cd3cf99410eca4205af46d1a2914d99b4b0f065fd014b789",
+        "requirements.txt": "302c05fd84eb7ef5bca2143a1262ec63c47883128e28ddff8bd733ae801a8a3b"
+      },
+      "review_result": "accepted_with_stated_limits",
+      "manual_observations": [
+        "Used current official releases, version policies, tagged metadata and migration guidance plus firsthand upstream issues #9607 and #6045.",
+        "Compared keep, V1 patch and staged V2 paths, linked local validator/serialization usage and coercion/422/schema effects; optional strict mode is separate.",
+        "Distinguished declared/installed/deployed state and metadata compatibility/runtime validation. Flagged Python 3.14 documentation disagreement, missing lock/runtime checks and no measured local speed benefit.",
+        "No directly applicable Korean firsthand report was secured in bounded research; no invented community consensus."
+      ]
+    },
+    {
+      "case": "versions-offline",
+      "input_file_set_and_sha256_preserved": true,
+      "input_hashes": {
+        "app.py": "d0a69bdcd0e59fb2458bdfb48d01c970b1e511a58a120613a2c8571979fffb45",
+        "Dockerfile": "d0511107cf1d9cb192baf150115ce18b821931b23207439859c519ba9819ea30",
+        "README.md": "861d861c24eaa9c5cd3cf99410eca4205af46d1a2914d99b4b0f065fd014b789",
+        "requirements.txt": "302c05fd84eb7ef5bca2143a1262ec63c47883128e28ddff8bd733ae801a8a3b"
+      },
+      "review_result": "accepted_with_stated_limits",
+      "manual_observations": [
+        "Did not browse; identified manifest pins, Docker tag and validator/serialization flow from local files.",
+        "Withheld latest version, support, security and runtime compatibility claims; deferred target decision pending explicit evidence.",
+        "Preserving packages pending evidence is not represented as proof the present version is safe."
+      ]
+    }
+  ],
+  "reviewer": "package author inspected actual responses/traces, checked raw input hashes and selected primary source links",
+  "parent_fixture_check": {
+    "case": "plan",
+    "command": "bundled Python -B -m unittest discover -s tests -v",
+    "result": "1 existing fixture test passed; this is not execution of the proposed new feature"
+  },
+  "limits": [
+    "Four single synthetic executions, no baseline or repetitions.",
+    "Brainstorm/plan agents could not start WindowsApps Python and reported this accurately; author separately ran the unchanged fixture with the available runtime.",
+    "Version candidate environments were not installed or executed. External source coverage and community research were bounded.",
+    "No real host automatic-selection test, production migration, local performance/cost benchmark or token/time measurement.",
+    "CI checks package/helper behavior and saved earlier API evidence, not fresh agent/web runs."
+  ],
+  "causal_quality_uplift_established": false
+}
