@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/brand/sharp-frames-logo.png" alt="Sharp Frames 로고: 각진 안경" width="220" />
+  <img src="assets/brand/sharp-frames-mascot-simple.png" alt="각진 안경을 쓴 Sharp Frames 마스코트" width="240" />
 </p>
 
 # Sharp Frames
