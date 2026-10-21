@@ -1,5 +1,5 @@
 ---
-name: maintainable-development
+name: sharp-frames-development
 description: >
   Implement features, fix bugs, and refactor application code so requested
   behavior is complete, behavior changes follow test-driven development, existing
@@ -24,6 +24,12 @@ Respect user scope, repository instructions, stack, conventions, and authorizati
 Continue ordinary authorized implementation autonomously. Ask only when missing
 information changes observable behavior or a consequential decision; do not add
 a planning approval to routine work.
+
+A short request is enough: users need not repeat this skill's design or testing
+criteria. Infer existing contracts from the project and choose modest, reversible
+defaults for a new project. For "clean up this code," preserve observable behavior
+and improve the parts that warrant it; do not require a detailed refactoring brief
+or invent features to fill one.
 
 - **Small/local change:** inspect affected code and relevant tests. For a behavior
   change use a focused failing test before implementation; cosmetic changes need

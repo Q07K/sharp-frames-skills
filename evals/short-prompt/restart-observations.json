@@ -1,0 +1,158 @@
+{
+  "without-skill": [
+    {
+      "run": 1,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]80Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:10.600980Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:10.600980Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.299s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 2,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]94Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:12.833494Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:12.833494Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.240s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 3,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]73Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:15.073373Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:15.073373Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.248s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 4,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]61Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:17.332761Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:17.332761Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.264s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 5,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]75Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:19.573975Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:19.573975Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.238s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 6,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]64Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:21.818464Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:21.818464Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.226s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 7,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]26Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:24.037726Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:24.037726Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.229s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 8,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]99Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:26.268399Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:26.268399Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.241s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 9,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]20Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:28.513220Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:28.513220Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.233s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "run": 10,
+      "passed": false,
+      "output": "F\n======================================================================\nFAIL: test_post_survives_restart (evaluate.Flows.test_post_survives_restart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]35Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:53:30.749535Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:53:30.749535Z'}\n\n----------------------------------------------------------------------\nRan 1 test in 2.244s\n\nFAILED (failures=1)\n"
+    }
+  ],
+  "with-skill": [
+    {
+      "run": 1,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.209s\n\nOK\n"
+    },
+    {
+      "run": 2,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.228s\n\nOK\n"
+    },
+    {
+      "run": 3,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.205s\n\nOK\n"
+    },
+    {
+      "run": 4,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.237s\n\nOK\n"
+    },
+    {
+      "run": 5,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.239s\n\nOK\n"
+    },
+    {
+      "run": 6,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.212s\n\nOK\n"
+    },
+    {
+      "run": 7,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.236s\n\nOK\n"
+    },
+    {
+      "run": 8,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.244s\n\nOK\n"
+    },
+    {
+      "run": 9,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.221s\n\nOK\n"
+    },
+    {
+      "run": 10,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.253s\n\nOK\n"
+    }
+  ],
+  "refactored": [
+    {
+      "run": 1,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.259s\n\nOK\n"
+    },
+    {
+      "run": 2,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.232s\n\nOK\n"
+    },
+    {
+      "run": 3,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.240s\n\nOK\n"
+    },
+    {
+      "run": 4,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.220s\n\nOK\n"
+    },
+    {
+      "run": 5,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.244s\n\nOK\n"
+    },
+    {
+      "run": 6,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.248s\n\nOK\n"
+    },
+    {
+      "run": 7,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.247s\n\nOK\n"
+    },
+    {
+      "run": 8,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.241s\n\nOK\n"
+    },
+    {
+      "run": 9,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.238s\n\nOK\n"
+    },
+    {
+      "run": 10,
+      "passed": true,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 2.262s\n\nOK\n"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Use case: logo-brand
+Asset type: primary logo PNG for Sharp Frames, an open-source collection of software development agent skills, used in a GitHub README and documentation.
+Primary request: Design a polished, distinctive logo that expresses the project's own identity: "angular eyeglasses, clear judgment and standards." The core symbol is a bold pair of angular rectangular eyeglasses, representing careful inspection, clarity, and considered engineering.
+Style/medium: exceptionally clean flat vector-like brand design, precise geometric construction, editorial Swiss typography, strong silhouette. Original and restrained.
+Subject: a single front-facing eyeglasses emblem with two equal rectangular lens openings, subtly chamfered sharp outer upper corners, substantial even-weight solid frames, a short clean bridge, small balanced outer temple tips. Open negative space inside lenses. No face. Prioritize recognizable glasses over abstract letterforms.
+Composition: one centered stacked logo on a square canvas: generously sized glasses emblem above a beautifully typeset two-line uppercase wordmark, "SHARP" on the first line and "FRAMES" on the second. Equal visual line widths and carefully considered tracking; generous breathing room around the full mark. The emblem and wordmark should form one compact balanced identity, usable at small sizes.
+Color: single solid deep charcoal ink for every visible element, no gradient, no shading, no texture.
+Text (verbatim): "SHARP" and "FRAMES". No other text.
+Background: genuine transparent alpha background, including inside the lenses.
+Avoid: multiple options, presentation boards, mockups, watermarks, shadows, 3D, glowing effects, circuit patterns, robots, sparkles, tiny details, hair, eyes, face, rounded hipster glasses, generic AI symbolism. Deliver the actual finished isolated logo only.

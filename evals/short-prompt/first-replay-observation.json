@@ -1,0 +1,11 @@
+{
+  "source": "Operator transcription of the first replay.py tool output; original source and frozen checks unchanged",
+  "condition": "without-skill",
+  "tests_run": 7,
+  "passed": 6,
+  "failed": 1,
+  "failed_case": "test_post_survives_restart",
+  "failure": "After successful post creation and immediate server termination/restart, GET returned {detail: Post not found} instead of the created post.",
+  "replay_exit_code": 1,
+  "remaining_conditions": "Not run: first replay stopped on the first differing outcome. Later replay code continues all conditions while retaining a nonzero exit for changed outcomes."
+}

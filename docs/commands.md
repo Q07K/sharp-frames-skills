@@ -3,21 +3,25 @@
 명령 하나가 한 가지 목적을 수행합니다. 평소 기능 구현에는 기존 스킬을 쓰고,
 리뷰·전체 진단·부채 정리·효과 비교는 필요할 때 골라 실행합니다.
 
+본문의 `$` 예시는 Codex용입니다. Claude Code에 직접 설치한 스킬은 `/`로 호출하며,
+플러그인 설치는 실제 등록된 `/plugin-name:skill-name`을 사용합니다.
+자동 선택과 다른 스킬의 공존은 [실제 호스트에서 별도로 확인](../evals/routing/README.md)합니다.
+
 <!-- sharp-frames-catalog:start -->
-| 호출 | 역할 | 소스 수정 |
-| --- | --- | --- |
-| `$maintainable-development` | TDD 기반 기능 구현·버그 수정·일반 리팩터링 | 요청 범위 내 수정 |
-| `$sharp-frames-brainstorm` | 기능 목표·대안·범위·수용 기준 구체화 | 읽기·보고 |
-| `$sharp-frames-plan` | 재사용·변경 순서·검증·마이그레이션 계획 | 읽기·보고 |
-| `$sharp-frames-test` | 테스트 설계·케이스 관리·페르소나 흐름·회귀 검증 | 요청 범위 내 수정 |
-| `$sharp-frames-versions` | 최신 공식·커뮤니티 근거로 버전 유지·업데이트 영향 판단 | 읽기·보고 |
-| `$sharp-frames-review` | 변경 diff·커밋·브랜치·PR 리뷰 | 읽기·보고 |
-| `$sharp-frames-audit` | 프로젝트 전체·하위 시스템 진단과 우선순위 | 읽기·보고 |
-| `$sharp-frames-debt` | 신규·기존·해소·미확인 기술 부채 정리 | 읽기·보고 |
-| `$sharp-frames-gain` | 개선 전후 효과·근거·비용·남은 위험 비교 | 읽기·보고 |
-| `$sharp-frames-map` | 프로젝트 흐름·정책 소유자·재사용 후보 파악 | 읽기·보고 |
-| `$sharp-frames-improve` | 선택한 지적·개선 항목 적용과 검증·효과 정리 | 요청 범위 내 수정 |
-| `$sharp-frames-help` | 명령 목록·선택 기준·사용 예시 | 읽기·보고 |
+| Codex | Claude Code | 역할 | 소스 수정 |
+| --- | --- | --- | --- |
+| `$sharp-frames-development` | `/sharp-frames-development` | TDD 기반 기능 구현·버그 수정·일반 리팩터링 | 요청 범위 내 수정 |
+| `$sharp-frames-brainstorm` | `/sharp-frames-brainstorm` | 기능 목표·대안·범위·수용 기준 구체화 | 읽기·보고 |
+| `$sharp-frames-plan` | `/sharp-frames-plan` | 재사용·변경 순서·검증·마이그레이션 계획 | 읽기·보고 |
+| `$sharp-frames-test` | `/sharp-frames-test` | 테스트 설계·케이스 관리·페르소나 흐름·회귀 검증 | 요청 범위 내 수정 |
+| `$sharp-frames-versions` | `/sharp-frames-versions` | 최신 공식·커뮤니티 근거로 버전 유지·업데이트 영향 판단 | 읽기·보고 |
+| `$sharp-frames-review` | `/sharp-frames-review` | 변경 diff·커밋·브랜치·PR 리뷰 | 읽기·보고 |
+| `$sharp-frames-audit` | `/sharp-frames-audit` | 프로젝트 전체·하위 시스템 진단과 우선순위 | 읽기·보고 |
+| `$sharp-frames-debt` | `/sharp-frames-debt` | 신규·기존·해소·미확인 기술 부채 정리 | 읽기·보고 |
+| `$sharp-frames-gain` | `/sharp-frames-gain` | 개선 전후 효과·근거·비용·남은 위험 비교 | 읽기·보고 |
+| `$sharp-frames-map` | `/sharp-frames-map` | 프로젝트 흐름·정책 소유자·재사용 후보 파악 | 읽기·보고 |
+| `$sharp-frames-improve` | `/sharp-frames-improve` | 선택한 지적·개선 항목 적용과 검증·효과 정리 | 요청 범위 내 수정 |
+| `$sharp-frames-help` | `/sharp-frames-help` | 명령 목록·선택 기준·사용 예시 | 읽기·보고 |
 <!-- sharp-frames-catalog:end -->
 
 표의 ‘읽기·보고’는 구현 소스·Git 인덱스·브랜치를 수정하지 않는다는 뜻입니다.
@@ -32,7 +36,7 @@
 | 여러 모듈을 어떤 순서로 바꿀까 | `plan` | 기존 모듈 재사용·작업 순서·검증·이전 계획 |
 | 라이브러리 버전을 유지할까 올릴까 | `versions` | 현재 근거·개발자 경험·호환성·수정 범위·서비스 효과 |
 | 테스트·예외 케이스·사용자 흐름을 따로 보강할까 | `test` | 요구 근거·케이스 목록·테스트 코드·실제 결과와 공백 |
-| 요구가 정해진 신규 기능을 만들어 달라 | `maintainable-development` | 요청 기능 구현·기존 기능 재사용·회귀 검증 |
+| 요구가 정해진 신규 기능을 만들어 달라 | `sharp-frames-development` | 요청 기능 구현·기존 기능 재사용·회귀 검증 |
 | 어디에 무슨 코드가 있고 재사용할 것은 무엇인가 | `map` | 흐름·정책 소유자·호출부·검증 위치·모르는 부분 |
 | 이 변경이 문제를 만들었는가 | `review` | 특정 diff의 구체적 지적, 재현 조건, 영향, 수정 방향 |
 | 프로젝트 전체에서 무엇을 먼저 고칠까 | `audit` | 시스템 지도, 조사 깊이, 근거 있는 문제와 우선순위 |
@@ -45,7 +49,7 @@
 ```text
 $sharp-frames-help
 $sharp-frames-map 주문 처리 흐름과 재사용 가능한 가격 계산 코드를 찾아줘.
-$maintainable-development 기존 계산을 활용해 견적 API를 만들어줘.
+$sharp-frames-development 기존 계산을 활용해 견적 API를 만들어줘.
 $sharp-frames-review 현재 커밋하지 않은 변경을 리뷰해줘.
 $sharp-frames-improve 리뷰 1번을 수정하고 회귀 검증까지 해줘.
 $sharp-frames-debt main부터 현재 변경까지 신규·해소·남은 부채를 정리해줘.

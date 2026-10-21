@@ -1,0 +1,86 @@
+{
+  "without-skill-own": {
+    "command": [
+      "<REFACTORED>\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "counts": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 0
+    },
+    "output": "........                                                                 [100%]\n============================== warnings summary ===============================\n..\\..\\..\\..\\..\\..\\.codex\\visualizations\\2026\\10\\20\\01a15a2f-284d-7a72-b0fa-05d66a2893bb\\short-prompt-18894c96\\94cdf494\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  <REFACTORED>\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n8 passed, 1 warning in 1.45s\n"
+  },
+  "with-skill-own": {
+    "command": [
+      "<REFACTORED>\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "counts": {
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 0
+    },
+    "output": ".........................................                                [100%]\n============================== warnings summary ===============================\n..\\..\\..\\..\\..\\..\\.codex\\visualizations\\2026\\10\\20\\01a15a2f-284d-7a72-b0fa-05d66a2893bb\\short-prompt-18894c96\\94cdf494\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  <REFACTORED>\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n41 passed, 1 warning in 3.40s\n"
+  },
+  "refactored-own": {
+    "command": [
+      "<REFACTORED>\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "counts": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 0
+    },
+    "output": ".........                                                                [100%]\n============================== warnings summary ===============================\n..\\..\\..\\..\\..\\..\\.codex\\visualizations\\2026\\10\\20\\01a15a2f-284d-7a72-b0fa-05d66a2893bb\\short-prompt-18894c96\\94cdf494\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  <REFACTORED>\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n9 passed, 1 warning in 1.65s\n"
+  },
+  "original-tests-on-refactored": {
+    "command": [
+      "<REFACTORED>\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "<USER>\\AppData\\Local\\Temp\\tmpvggpry_7\\baseline-tests"
+    ],
+    "exit_code": 0,
+    "counts": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 0
+    },
+    "output": "........                                                                 [100%]\n============================== warnings summary ===============================\n..\\..\\..\\..\\..\\..\\.codex\\visualizations\\2026\\10\\20\\01a15a2f-284d-7a72-b0fa-05d66a2893bb\\short-prompt-18894c96\\94cdf494\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  <REFACTORED>\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n8 passed, 1 warning in 2.86s\n"
+  },
+  "discovered-regression-on-original": {
+    "command": [
+      "<REFACTORED>\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "<USER>\\AppData\\Local\\Temp\\tmpoj7om0g2\\test_discovered_regression.py",
+      "-k",
+      "failed_commit_is_not_reported_as_success"
+    ],
+    "exit_code": 1,
+    "counts": {
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "deselected": 8
+    },
+    "output": "F                                                                        [100%]\n================================== FAILURES ===================================\n________________ test_failed_commit_is_not_reported_as_success ________________\n\nclient = <starlette.testclient.TestClient object at 0x00000207BE612270>\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000207BE2C7E10>\n\n    def test_failed_commit_is_not_reported_as_success(client, monkeypatch):\n        headers = signup_and_login(client)\n        real_connect = sqlite3.connect\n        failing_client = TestClient(client.app, raise_server_exceptions=False)\n    \n        with monkeypatch.context() as m:\n            m.setattr(\n                sqlite3, \"connect\", lambda *a, **kw: real_connect(*a, factory=FailingCommitConnection, **kw)\n            )\n            r = failing_client.post(\"/posts\", json={\"title\": \"t\", \"content\": \"c\"}, headers=headers)\n    \n>       assert r.status_code == 500\nE       assert 201 == 500\nE        +  where 201 = <Response [201 Created]>.status_code\n\n<USER>\\AppData\\Local\\Temp\\tmpoj7om0g2\\test_discovered_regression.py:120: AssertionError\n============================== warnings summary ===============================\n..\\..\\..\\..\\..\\..\\.codex\\visualizations\\2026\\10\\20\\01a15a2f-284d-7a72-b0fa-05d66a2893bb\\short-prompt-18894c96\\94cdf494\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  <REFACTORED>\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED ..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\tmpoj7om0g2\\test_discovered_regression.py::test_failed_commit_is_not_reported_as_success\n1 failed, 8 deselected, 1 warning in 1.58s\n"
+  }
+}

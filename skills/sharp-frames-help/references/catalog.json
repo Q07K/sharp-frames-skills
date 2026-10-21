@@ -2,10 +2,10 @@
   "schema_version": 1,
   "commands": [
     {
-      "name": "maintainable-development",
+      "name": "sharp-frames-development",
       "purpose_ko": "TDD 기반 기능 구현·버그 수정·일반 리팩터링",
       "edits_source": true,
-      "example": "$maintainable-development 기존 주문 계산을 재사용해 견적 기능을 추가해줘."
+      "example": "$sharp-frames-development 로그인과 게시글 CRUD API 만들어줘."
     },
     {
       "name": "sharp-frames-brainstorm",

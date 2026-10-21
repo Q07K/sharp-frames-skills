@@ -11,9 +11,9 @@ END = '<!-- sharp-frames-catalog:end -->'
 
 def table():
     commands = json.loads(CATALOG.read_text(encoding='utf-8'))['commands']
-    lines = ['| 호출 | 역할 | 소스 수정 |', '| --- | --- | --- |']
+    lines = ['| Codex | Claude Code | 역할 | 소스 수정 |', '| --- | --- | --- | --- |']
     for command in commands:
-        lines.append(f"| `${command['name']}` | {command['purpose_ko']} | {'요청 범위 내 수정' if command['edits_source'] else '읽기·보고'} |")
+        lines.append(f"| `${command['name']}` | `/{command['name']}` | {command['purpose_ko']} | {'요청 범위 내 수정' if command['edits_source'] else '읽기·보고'} |")
     return '\n'.join(lines)
 
 

@@ -90,7 +90,7 @@ skip/실행 불가를 남겨 과거 통과를 현재 결과로 오해하지 않�
 ## 호출 예시
 
 ```text
-$maintainable-development 문서 공유 기능을 추가하고 TDD로 검증해줘.
+$sharp-frames-development 문서 공유 기능을 추가하고 TDD로 검증해줘.
 기존 권한 정책을 활용하고 역할별 연속 행동과 저장 상태까지 확인해줘.
 
 $sharp-frames-test 이번 변경의 예외·역할·상태 케이스와 사용자 흐름을 설계만 해줘.

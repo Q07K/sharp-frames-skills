@@ -1,0 +1,12 @@
+{
+  "normalization": "raw bytes",
+  "files": {
+    "evals/board-independent/REQUIREMENTS.md": "97a12a60b18c8eb103b7c5386d08db243c43a6bd96e418f289de80083d60e5ce",
+    "evals/board-independent/evaluate.py": "fa46809eb7b9b8aa4e056ef76c3d84049a7ec0c4c6296422a672c1e1b056a2a0",
+    "evals/board-independent/protocol.json": "68f6888aca46af8a0b85eaf653513f99a991d3288b9bdae9ed1355227591df94",
+    "skills/sharp-frames-development/SKILL.md": "8074d367ba8891d9c13e59ea69b3d5f835b2ed3139a67f85560bfaad581b8d8a",
+    "skills/sharp-frames-development/references/design.md": "8155a74e688c49aca4c202d1d80c9b7d1f4e32cdd80ef0e7d64eb8b675a7834e",
+    "skills/sharp-frames-development/references/python-fastapi.md": "89ad35e70500e80db05c8b6b44ba0317459ce7bc9b2f6b8da31b5ec4aaaa5191",
+    "skills/sharp-frames-development/references/verification.md": "4d5a2af5ecf94a96c70e9b7cbae9c0c6d4e35bf20aae76cec4526042e735325d"
+  }
+}

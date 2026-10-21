@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-21",
+  "task": "FastAPI로 로그인과 게시글 CRUD API 만들어줘.",
+  "cleanup_task": "이 코드 정리해줘.",
+  "conditions": {
+    "without-skill": "Empty project, no Sharp Frames skill",
+    "with-skill": "Empty project, development installed and slash-prefixed task",
+    "refactored": "Unmodified copy of without-skill submission, fresh process, development installed and slash-prefixed cleanup task"
+  },
+  "samples_per_condition": 1,
+  "shared_context": "Read ENVIRONMENT.md for the prepared runtime and workspace boundary. No requirements document, architecture, reference implementation or acceptance grader is supplied.",
+  "assessment_frozen_before_generation": [
+    "Record completion, clarification requests, chosen API and architecture without prescribing either.",
+    "Exercise registration or documented account setup, login, create/list/read/update/delete through actual HTTP; route/schema adapters may only translate the submitted interface.",
+    "Observe anonymous write denial, wrong-password denial, other-author modification denial and state preservation as separate safety observations; these policies were not explicit product requirements.",
+    "Run the submissions' own checks; do not equate differing test counts with quality.",
+    "Freeze the without-skill source, its tests, OpenAPI schema and an external HTTP adapter before launching cleanup. Run the same frozen checks against baseline and refactored source.",
+    "Do not repair submissions, reroll failures, change the baseline or acceptance expectations to manufacture a gain. Record blocked and missing checks.",
+    "Publish actual sources, model/tool provenance, observed tool calls, prompts, file fingerprints and limitations. Do not publish internal model thinking or private account paths."
+  ],
+  "limits": "Separate working folders, virtual environments and fresh Claude CLI processes; same OS/account/provider, not a VM or separate user. Only development installed in treatment; no claim about natural-language triggering, other skills or Codex execution."
+}

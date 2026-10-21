@@ -1,0 +1,3 @@
+-r ../../evals/fastapi/requirements.txt
+pwdlib[argon2]==0.3.0
+uvicorn==0.38.0

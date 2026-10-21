@@ -1,153 +1,269 @@
 <p align="center">
-  <img src="assets/brand/sharp-frames-mascot-simple.png" alt="각진 안경을 쓴 Sharp Frames 마스코트" width="240" />
+  <img src="assets/brand/sharp-frames-logo.png" alt="Sharp Frames 로고: 각진 안경" width="220" />
 </p>
 
 # Sharp Frames
 
-**각진 안경, 명확한 판단과 기준.**
+**AI가 만든 코드를, 사람이 이해하고 계속 고칠 수 있게.**
 
-기능 구체화·계획·구현·리뷰·프로젝트 진단·기술 부채·개선 효과·버전 검토를 골라 쓰는 개발 스킬 모음입니다.
-사람이 이유를 이해하고 안전하게 수정할 수 있는 결과물을 목표로 합니다.
+Sharp Frames는 AI가 개발할 때 **기능 완성·기존 코드 재사용·검증**을 함께 챙기도록 돕는
+개발 스킬 모음입니다. 새 기능 구현, 버그 수정, 리팩터링, 계획과 리뷰에 맞는 스킬을 골라 씁니다.
 
-## 명령 목록
+기능이 돌아가도 인증·업무 규칙·DB 처리가 한곳에 섞이거나 같은 판단이 여러 곳에 반복되면
+다음 변경이 어려워집니다. AI에게 매번 이 기준을 길게 설명하지 않고, **무엇을 재사용하고,
+어디를 나누고, 어떤 동작을 확인할지** 함께 판단하게 하려고 만들었습니다.
 
-<!-- sharp-frames-catalog:start -->
-| 호출 | 역할 | 소스 수정 |
+## 원하는 작업만 짧게 말하세요
+
+새 프로젝트라면:
+
+```text
+$sharp-frames-development FastAPI로 로그인과 게시글 CRUD API 만들어줘.
+```
+
+이미 코드가 있다면:
+
+```text
+$sharp-frames-development 이 코드 정리해줘.
+```
+
+재사용·책임 분리·테스트 순서를 매번 설명할 필요는 없습니다. 스킬이 코드와 기존 계약을
+읽고 작업에 맞게 적용합니다. 꼭 지켜야 하는 사업 규칙이나 배포 조건만 덧붙이세요.
+Claude Code에서는 `$` 대신 `/sharp-frames-development`로 호출합니다.
+
+## 같은 게시글 API를 만드는 세 가지 경로
+
+짧은 요청을 **독립 작업 폴더·가상환경·새 대화**에서 실제로 실행했습니다.
+로그인과 게시글 CRUD를 만들고 SQLite에 저장합니다. 긴 기능 명세나 원하는 폴더 구조는
+주지 않았습니다. 준비된 Python 실행기와 설치 패키지는 공통으로 안내했습니다.
+
+```text
+빈 프로젝트 ── 스킬 없이 개발 ── A: 처음 만든 코드
+                                 └── 스킬로 정리 ── C: 기존 코드 개선
+별도 빈 프로젝트 ── 처음부터 스킬로 개발 ── B: 새 개발 결과
+```
+
+### 1. 같은 프롬프트에 스킬을 붙이면
+
+**스킬 미사용 · A**
+
+```text
+FastAPI로 로그인과 게시글 CRUD API 만들어줘.
+```
+
+**스킬 사용 · B**
+
+```text
+$sharp-frames-development FastAPI로 로그인과 게시글 CRUD API 만들어줘.
+```
+
+제품 요청은 같고 스킬 설치·호출 여부만 다릅니다. 실제 실험은 Claude Code의 `/` 호출로
+진행했습니다. 두 조건 모두 같은 환경 안내를 추가했고, 이전 예제·상대 코드·외부 검사는
+제공하지 않았습니다.
+
+| 실제 관측 | A · 미사용 새 개발 | B · 처음부터 스킬 사용 |
 | --- | --- | --- |
-| `$maintainable-development` | TDD 기반 기능 구현·버그 수정·일반 리팩터링 | 요청 범위 내 수정 |
-| `$sharp-frames-brainstorm` | 기능 목표·대안·범위·수용 기준 구체화 | 읽기·보고 |
-| `$sharp-frames-plan` | 재사용·변경 순서·검증·마이그레이션 계획 | 읽기·보고 |
-| `$sharp-frames-test` | 테스트 설계·케이스 관리·페르소나 흐름·회귀 검증 | 요청 범위 내 수정 |
-| `$sharp-frames-versions` | 최신 공식·커뮤니티 근거로 버전 유지·업데이트 영향 판단 | 읽기·보고 |
-| `$sharp-frames-review` | 변경 diff·커밋·브랜치·PR 리뷰 | 읽기·보고 |
-| `$sharp-frames-audit` | 프로젝트 전체·하위 시스템 진단과 우선순위 | 읽기·보고 |
-| `$sharp-frames-debt` | 신규·기존·해소·미확인 기술 부채 정리 | 읽기·보고 |
-| `$sharp-frames-gain` | 개선 전후 효과·근거·비용·남은 위험 비교 | 읽기·보고 |
-| `$sharp-frames-map` | 프로젝트 흐름·정책 소유자·재사용 후보 파악 | 읽기·보고 |
-| `$sharp-frames-improve` | 선택한 지적·개선 항목 적용과 검증·효과 정리 | 요청 범위 내 수정 |
-| `$sharp-frames-help` | 명령 목록·선택 기준·사용 예시 | 읽기·보고 |
-<!-- sharp-frames-catalog:end -->
+| 로그인·게시글 CRUD | 구현·외부 흐름 통과 | 구현·외부 흐름 통과 |
+| 인증·라우터·DB 분리 | 이미 분리함 | 분리함 |
+| 작성자 권한 판단 | 공통 함수 사용 | 공통 함수 사용 |
+| 검사 구성 | API 검사 한 파일 | 인증·게시글 검사와 케이스 표 |
+| 앱 구성 | 모듈의 앱 + 환경 설정 | DB 경로를 받는 앱 생성 함수 |
 
-먼저 `$sharp-frames-help`로 사용법을 볼 수 있습니다.
-[상세 사용법과 선택 기준](docs/commands.md) · [Ponytail 등 비교 조사와 반영 결정](docs/skill-landscape.md).
+**최초 공통 흐름 검사에서는 동률이었습니다.** 이후 원본의 저장 완료 시점 문제를
+발견해 아래에 추가 검사 결과를 남겼습니다. 미사용 결과도 모듈화와 권한 검사를 갖췄으며,
+폴더나 테스트 수가 많다는 이유로 품질 우위를 주장하지 않습니다.
 
-검토만 요청하면 구현을 수정하지 않습니다. `improve`나 일반 구현을 요청하면 해당 범위의
-코드를 고치고 검증하며, 의미 있는 남은 부채와 실제·예상 효과를 함께 설명합니다.
-부채 대장·보고 파일은 요청 또는 기존 저장소 규칙에 따라 저장합니다.
+### 2. 먼저 만든 코드를 스킬로 정리하면 · A → C
 
-**검증 상태: 실험 단계.** 초기 구현 스킬의 FastAPI·SQLite 비교에서는 사용·미사용
-각 9개 결과가 모두 외부 검사를 통과해 일관된 품질 우위를 확인하지 못했습니다.
-[기존 비교 결과](evals/results/fastapi-2026-10-20.md)는 새 명령의 효과를 입증하는 실험이 아닙니다.
-초기 명령은 [기능별 수용 검사](evals/suite/README.md), 새 탐색·계획·버전 검토는
-[별도 기능 검사](evals/discovery/README.md)로 확인합니다.
-한 번의 생성으로 정답을 보장하거나 사람의 검토를 없애는 도구는 아닙니다.
-
-## 신규 기능은 어떻게 추가할까
-
-이미 요구가 명확하면 `$maintainable-development`로 바로 구현합니다. 기존 기능·계약을
-확인하고 재사용하며, 정상·실패 흐름과 변경 영향을 검증하는 역할이므로 새 `build` 명령은
-중복입니다. 불명확한 문제는 `brainstorm`, 여러 모듈을 바꾸는 작업은 `plan`, 의존성 선택이
-불확실하면 `versions`를 먼저 사용할 수 있습니다. 세 단계를 매번 거칠 필요는 없습니다.
+A를 그대로 세 번째 공간에 복사하고 새 대화에서 요청했습니다.
 
 ```text
-$sharp-frames-brainstorm 재주문 기능의 최소 범위와 대안을 기존 장바구니 흐름과 비교해줘.
-$sharp-frames-plan 선택한 방안의 재사용 지점, 변경 순서, 수용 검사와 배포 영향을 정리해줘.
-$maintainable-development 이 계획대로 신규 기능을 구현하고 검증해줘.
-$sharp-frames-versions FastAPI·Pydantic을 유지할지 공식 자료와 개발자 경험을 조사해 판단해줘.
+$sharp-frames-development 이 코드 정리해줘.
 ```
 
-버전 검토는 최신 번호 나열을 넘어, 실제 사용 API와 변경 사항을 대조해 유지·동일 계열
-업데이트·단계적 이전을 비교합니다. 공식 사실과 커뮤니티 경험, 필요한 호환 수정과 선택적
-기능 활용, 관측 효과와 예상 효과를 구분합니다. 검토만으로 패키지를 변경하지 않습니다.
-[판단 기준과 상세 예시](docs/feature-workflow.md)를 참고하세요.
-
-## 기능 개발과 테스트
-
-신규·수정 동작은 기본적으로 **케이스 분석 → 관련 실패 확인 → 최소 구현 → 같은 검사
-통과 → 리팩터링 → 회귀·사용자 흐름 검증**으로 진행합니다. 이미 동작하는 기능의 재사용과
-동작 보존 리팩터링은 기존 green을 유지하며 불필요한 실패를 만들지 않습니다.
-
-`maintainable-development`에 TDD·테스트 변경 근거·페르소나 흐름 확인이 포함됩니다.
-별도로 케이스 설계·관리·테스트 작성을 요청할 때는 다음처럼 사용합니다.
+**정리 전 · A** — 이미 역할별 파일이 있는 상태입니다.
 
 ```text
-$sharp-frames-test 문서 공유 기능의 역할·상태·예외와 사용자별 연속 행동을 검토하고
-회귀 테스트를 보강해줘. 제품 코드는 고치지 말고 발견한 실패를 알려줘.
+app/
+├── main.py
+├── db.py
+├── schemas.py
+├── security.py
+└── routers/
+    ├── auth.py
+    └── posts.py
+tests/
+└── test_api.py
 ```
 
-기대값뿐 아니라 fixture·mock·skip·스냅샷·수집 설정 변경도 근거와 남은 검증을 확인합니다.
-이 지침은 파일의 변경 권한을 차단하는 보안 장치가 아닙니다. 강한 보장이 필요하면
-구현 작성자가 수정할 수 없는 수용 검사와 실제 CI·리뷰 보호가 필요합니다.
-[실행·케이스 관리 기준](docs/testing-workflow.md) · [기능 검사와 한계](evals/tdd/README.md).
+**정리 후 · C** — 폴더는 유지하고 파일 사이의 책임을 정리했습니다.
 
-## 포함하는 원칙
+```text
+app/
+├── main.py
+├── db.py            # 공통 DB 의존성·연결 수명 관리
+├── schemas.py
+├── security.py      # 공통 인증 실패 응답
+└── routers/
+    ├── auth.py      # 공통 DB·인증 응답 재사용
+    └── posts.py     # 공통 DB 재사용
+tests/
+└── test_api.py      # 기존 검사 + commit 실패 회귀
+```
 
-| 관심사 | 스킬이 바꾸려는 행동 |
-| --- | --- |
-| 기능 완성 | 정상 흐름뿐 아니라 중요한 실패·경계 조건과 실제 연결까지 구현 |
-| 의도 반영 | 요구사항·보존할 동작을 확인하고 중요한 정책을 추측하지 않음 |
-| 재사용 | 함수 이름뿐 아니라 실제 구현·호출부·테스트를 확인한 뒤 사용·확장·분리를 판단 |
-| 모듈화 | 함께 변경되는 정책을 모으고 독립 정책을 억지로 결합하지 않음 |
-| 폴더·의존성 | 기존 구조에 맞춰 배치하고 유용한 경계와 변경 영향을 확인 |
-| 가독성 | 의미·단위·상태가 드러나는 이름과 이해 부담을 줄이는 함수 구성 |
-| 타입·계약 | 입력·출력·오류·부작용을 명확히 하고 정적 타입과 런타임 검증을 구분 |
-| 주석 | 줄마다 해설하지 않고 정책·제약·선택 이유와 필요한 사용 계약을 남김 |
-| 오류·상태 | 권한·트랜잭션·동시성·외부 효과·자원 수명을 관련 작업에서 검토 |
-| 검증 | 요구사항 기반 TDD, 경계·예외·역할·상태와 연결된 사용자 흐름 검증 |
-| 테스트 관리 | 케이스와 요구의 연결, 기대값 변경 근거, 실패·skip·미실행 이력 유지 |
-| 리뷰 | 실제 diff를 확인하고 재사용·변경 영향·실행한 검사·미확인 부분을 전달 |
-| 실용성 | 작은 수정에 대규모 설계·문서·새 도구를 강요하지 않음 |
+예를 들어 DB 의존성은 원래 인증·게시글 파일과 인증 처리에 각각 선언되어 있었습니다.
 
-## 사용
+```python
+# A: auth.py와 posts.py에서 각각 선언
+Db = Annotated[sqlite3.Connection, Depends(get_db)]
+```
 
-도움말을 보거나 목적에 맞는 스킬을 직접 호출합니다.
+정리 후에는 DB 모듈의 선언을 세 곳에서 함께 사용합니다.
+
+```python
+# C: db.py에서 한 번 선언
+DbConnection = Annotated[sqlite3.Connection, Depends(get_db, scope="function")]
+```
+
+공통 선언으로 commit을 응답 전에 마치도록 맞추고, 초기화 연결도 명시적으로 닫습니다.
+로그인 실패 응답은 기존 인증 오류 함수를 재사용합니다. 폴더 재편 없이도 고칠 곳이 줄었습니다.
+[실제 정리 전 코드](examples/fastapi-short-prompt/without-skill/app/db.py)와
+[정리 후 코드](examples/fastapi-short-prompt/refactored/app/db.py)를 비교할 수 있습니다.
+
+기존 HTTP 흐름과 OpenAPI는 유지했습니다. **commit 실패를 성공 응답으로 내보내던 경우는
+500으로 고쳤습니다.** 이 오류 동작 수정은 단순한 코드 이동과 구분합니다.
+
+### 3. 처음부터 스킬로 개발하면 · B
+
+B는 A를 정리한 코드가 아니라, **빈 프로젝트에서 같은 개발 요청으로 만든 별도 결과**입니다.
+초기부터 앱 생성·DB·인증·게시글을 나누고, 인증과 게시글 검사를 따로 구성했습니다.
+공통 초기화 파일과 입력·실행 문서는 아래 트리에서 생략했습니다.
+
+```text
+app/
+├── main.py           # 앱 생성·라우터 연결
+├── db.py             # 연결·스키마
+├── schemas.py        # 요청·응답 계약
+├── auth.py           # 세션·인증·회원 라우터
+└── posts.py          # 게시글 CRUD·작성자 판단
+tests/
+├── conftest.py
+├── test_auth.py
+├── test_posts.py
+└── CASE_MATRIX.md    # 기능·역할·검사의 연결
+```
+
+예를 들어 [앱 생성 함수](examples/fastapi-short-prompt/with-skill/app/main.py)는 DB 경로와
+토큰 수명을 받아 인스턴스별로 설정합니다. 아래는 실제 생성 코드의 일부입니다.
+
+```python
+def create_app(database_path: str, token_ttl: timedelta = DEFAULT_TOKEN_TTL) -> FastAPI:
+    init_schema(database_path)
+    app = FastAPI(title="Board API")
+    app.state.database_path = database_path
+    app.state.token_ttl = token_ttl
+    app.include_router(auth.router)
+    app.include_router(posts.router)
+    return app
+```
+
+테스트에서는 별도 DB 경로로 앱을 만들 수 있습니다. 이 구조를 스킬의 고정 템플릿으로
+강제한 것은 아닙니다. A의 작성자 필터와 B의 응답 모델 등 자율적으로 선택한 기능·계약은
+서로 다르므로 두 새 개발 결과를 API 전체가 같은 구현으로 보지는 않습니다.
+
+### 실제 확인한 결과
+
+| 검사 | A · 미사용 | C · A를 정리 | B · 처음부터 사용 |
+| --- | --- | --- | --- |
+| 최초 공통 HTTP 흐름·안전성 관측 | 6/6 통과 | 6/6 통과 | 6/6 통과 |
+| A의 OpenAPI 계약 비교 | 원본 고정 | 일치 | 별도 API라 비교하지 않음 |
+| 수정하지 않은 A의 기존 검사 | 8/8 통과 | 8/8 통과 | 별도 계약이라 비교하지 않음 |
+| 성공 응답 직후 강제 종료·재시작 (사후 10회) | **0/10 통과** | **10/10 통과** | **10/10 통과** |
+
+공통 흐름은 로그인·CRUD, 잘못된 비밀번호, 익명·다른 작성자·위조 토큰 거부 후 데이터 보존,
+재시작 후 게시글 보존입니다. **재실행에서는 A의 성공 응답 직후 강제 종료 시 글이
+저장되지 않는 경합을 발견했습니다.** Windows에서 같은 검사를 10회 반복한 결과가 마지막
+행입니다. 생성 결과는 수정하지 않았습니다. 정리 과정에서 발견한 commit 실패 검사도
+A에서는 실패하고 C에서는 통과했습니다. 이 추가 발견들은 사전에 고정한 A/B 점수와 구분합니다.
+
+조건별 1회이며 C는 A에서 파생됐습니다. 같은 OS·계정을 쓴 실험으로, 일반적인 품질·속도
+향상을 입증하지 않습니다. [세 프로젝트 실행하기](examples/fastapi-short-prompt/README.md) ·
+[전체 요청·검사·로그·독립 범위](evals/short-prompt/README.md)
+
+이전 [상세 요구사항 기반 독립 비교](evals/board-independent/README.md)와
+[한 작성자의 설명용 before/after](examples/fastapi-board/README.md)도 성격을 구분해 보존합니다.
+
+## 설치하고 사용하기
+
+### Codex
+
+`skills/`에서 사용할 폴더 전체를 개인용 `~/.agents/skills/` 또는 프로젝트의
+`.agents/skills/` 아래에 복사합니다. 전체 메뉴는 12개입니다.
 
 ```text
 $sharp-frames-help
-$maintainable-development 기존 주문 계산을 활용해서 견적 기능을 추가해줘.
+$sharp-frames-review 현재 변경을 검토해줘. 코드는 수정하지 마.
 ```
 
-기존 프로젝트를 변경하는 요청이 주 대상입니다. 신규 구현에도 적용하되, 존재하지 않는
-기존 코드를 찾느라 시간을 쓰기보다 표준 기능·현재 스택을 먼저 활용합니다.
-설명만 요청한 대화, 이름 짓기, 문서만 수정하는 작업을 구현 작업으로 바꾸지 않습니다.
+### Claude Code
 
-### Codex에 설치
-
-`skills/` 안에서 사용할 스킬 폴더 전체를 개인용 `~/.agents/skills/` 아래 또는
-프로젝트의 `.agents/skills/` 아래에 복사합니다. 전체 메뉴가 필요하면 12개를 설치합니다.
-각 폴더는 단독 실행이 가능하며, 같은 이름의 기존 스킬이 있으면 변경 내용을 먼저 확인합니다.
-새 설치가 현재 대화에 바로 노출되지 않는 환경에서는 새 대화에서 발견 여부를 확인합니다.
-
-다른 Agent Skills 지원 도구에서는 해당 도구의 설치 경로와 발견 규칙을 확인하세요.
-도구마다 자동 선택 방식이 다르므로 설치만으로 모든 요청에 적용된다고 가정하지 않습니다.
-
-## 스킬이 담당하지 않는 것
-
-- 프로젝트마다 다른 폴더 구조·검사 명령·업무 정책은 해당 저장소의 지침과 코드가 기준입니다.
-- 린트·타입·테스트·CI는 별도 실행 체계입니다. 이 스킬은 실제 명령을 찾아 실행하고 결과를 확인하도록 안내합니다.
-- 파일 수, 함수 길이, 주석 수, 테스트 수를 품질의 목표로 삼지 않습니다.
-- 배포·게시·외부 변경에 추가 권한을 부여하지 않습니다.
-
-## 구조
-
-기능별 스킬은 `skills/sharp-frames-*`에 있습니다. 도움말의 카탈로그가 명령 목록의
-기준이며 README와 사용 안내 표는 `python tools/render_catalog.py --write`로 갱신합니다.
-
+스킬 폴더 전체를 `~/.claude/skills/` 또는 프로젝트의 `.claude/skills/` 아래에 복사합니다.
+예를 들어 `.claude/skills/sharp-frames-review/SKILL.md`를 설치합니다.
 
 ```text
-skills/maintainable-development/
-  SKILL.md                       핵심 작업 방식과 판단 기준
-  references/design.md           재사용·경계·이름·타입·주석·상태
-  references/verification.md     테스트·diff 검토·검증 근거
-  references/python-fastapi.md   Python/FastAPI에서 필요한 세부 판단
-evals/                           재현 가능한 예제 과제와 입력 자료
-tools/                           저장소 및 예제 결과 검사
+/sharp-frames-help
+/sharp-frames-review 현재 변경을 검토해줘. 코드는 수정하지 마.
 ```
 
-본문과 참고 자료를 나누는 이유는 원칙을 생략하기 위해서가 아닙니다. 현재 작업에 필요한
-세부 지침을 읽게 하고, 서로 충돌하는 원칙을 맥락에 맞게 판단하도록 하기 위해서입니다.
+플러그인 설치는 실제 등록된 `/plugin-name:skill-name`을 사용합니다.
+[Claude Code 공식 안내](https://code.claude.com/docs/en/skills)를 참고하세요.
+같은 이름의 기존 스킬은 변경 내용을 확인하고 교체합니다. 설치가 바로 노출되지 않으면
+새 대화에서 발견 여부를 확인합니다. 이전 `maintainable-development`는
+`sharp-frames-development`로 교체하며, 과거 평가 기록의 이름·해시는 당시 상태를 유지합니다.
 
-## 검증과 기여
+자연어 자동 선택은 호스트와 다른 설치 스킬의 영향을 받습니다. Superpowers나 기본
+`/code-review`와 역할이 겹칠 수 있으며, 직접 호출해도 다른 워크플로의 동시 선택을
+막지는 않습니다. 선택 우선순위는 보장하지 않습니다.
+[실제 호스트 평가와 관측 결과](evals/routing/README.md)를 별도로 공개합니다.
+
+## 목적에 맞는 스킬 고르기
+
+<!-- sharp-frames-catalog:start -->
+| Codex | Claude Code | 역할 | 소스 수정 |
+| --- | --- | --- | --- |
+| `$sharp-frames-development` | `/sharp-frames-development` | TDD 기반 기능 구현·버그 수정·일반 리팩터링 | 요청 범위 내 수정 |
+| `$sharp-frames-brainstorm` | `/sharp-frames-brainstorm` | 기능 목표·대안·범위·수용 기준 구체화 | 읽기·보고 |
+| `$sharp-frames-plan` | `/sharp-frames-plan` | 재사용·변경 순서·검증·마이그레이션 계획 | 읽기·보고 |
+| `$sharp-frames-test` | `/sharp-frames-test` | 테스트 설계·케이스 관리·페르소나 흐름·회귀 검증 | 요청 범위 내 수정 |
+| `$sharp-frames-versions` | `/sharp-frames-versions` | 최신 공식·커뮤니티 근거로 버전 유지·업데이트 영향 판단 | 읽기·보고 |
+| `$sharp-frames-review` | `/sharp-frames-review` | 변경 diff·커밋·브랜치·PR 리뷰 | 읽기·보고 |
+| `$sharp-frames-audit` | `/sharp-frames-audit` | 프로젝트 전체·하위 시스템 진단과 우선순위 | 읽기·보고 |
+| `$sharp-frames-debt` | `/sharp-frames-debt` | 신규·기존·해소·미확인 기술 부채 정리 | 읽기·보고 |
+| `$sharp-frames-gain` | `/sharp-frames-gain` | 개선 전후 효과·근거·비용·남은 위험 비교 | 읽기·보고 |
+| `$sharp-frames-map` | `/sharp-frames-map` | 프로젝트 흐름·정책 소유자·재사용 후보 파악 | 읽기·보고 |
+| `$sharp-frames-improve` | `/sharp-frames-improve` | 선택한 지적·개선 항목 적용과 검증·효과 정리 | 요청 범위 내 수정 |
+| `$sharp-frames-help` | `/sharp-frames-help` | 명령 목록·선택 기준·사용 예시 | 읽기·보고 |
+<!-- sharp-frames-catalog:end -->
+
+위 Claude Code 표기는 스킬 폴더를 직접 설치한 경우입니다.
+목표가 명확하면 `development`로 바로 구현하고, 목표가 불명확하면 `brainstorm`,
+여러 모듈의 변경 순서가 필요하면 `plan`을 선택합니다. 세 단계를 매번 거칠 필요는 없습니다.
+
+리뷰·진단만 요청하면 구현을 고치지 않습니다. `improve`나 구현을 요청하면 해당 범위를
+수정하고 검증합니다. 구현에는 TDD와 회귀·사용자 흐름 확인이 포함되며,
+별도 케이스 설계·관리는 `test`를 사용할 수 있습니다. 파일·보고서·부채 대장은 요청이나
+기존 저장소 규칙에 따라 저장합니다.
+
+[명령 선택과 상세 예시](docs/commands.md) · [기능 개발 흐름](docs/feature-workflow.md) ·
+[테스트와 검증 기준](docs/testing-workflow.md)
+
+## 검증 상태와 기여
+
+**실험 단계입니다.** 짧은 요청 비교는 조건별 1회이며 최초 흐름 통과 후 원본의 저장 경합을 발견했습니다. 별도의 초기
+FastAPI·SQLite 스킬 사용/미사용 비교도 각 9개 결과가 모두 외부 검사를 통과해
+일관된 품질 우위를 확인하지 못했습니다. [기존 비교 결과](evals/results/fastapi-2026-10-20.md),
+[기능별 수용 검사](evals/suite/README.md), [탐색·계획·버전 검사](evals/discovery/README.md),
+[TDD·테스트 무결성 검사](evals/tdd/README.md)의 범위와 한계를 함께 공개합니다.
 
 ```sh
 python -m pip install -r requirements-dev.txt
@@ -155,17 +271,16 @@ python tools/check_repository.py
 python -m unittest discover -s tests -v
 ```
 
-이 명령은 패키지 형식·참조 링크·평가 입력과 기본 fixture를 확인합니다.
-스킬의 실제 효과를 증명하는 벤치마크와는 다릅니다.
-[평가 방법](evals/README.md)과 [기여 방법](CONTRIBUTING.md)을 참고하세요.
-[첫 비교 결과와 한계](evals/results/iteration-1.md)를 함께 공개합니다.
+위 명령은 패키지 형식·링크·평가 입력과 기본 fixture, 보조 도구를 검사합니다.
+앞의 게시글 API 검사와 실제 호스트 자동 선택 평가는 따로 실행합니다.
+Windows에서 `python`이 실행되지 않으면 [실행기·uv 대체 명령](docs/python-runtime.md)을 참고하세요.
+명령 표는 help의 catalog가 기준이며 `python tools/render_catalog.py --write`로 갱신합니다.
 
-## 배경 자료
-
-국내외 공개 사례와 원저자 지침을 바탕으로 구성했습니다.
-출처와 적용 범위는 [설계 근거](docs/sources.md)에 정리합니다.
-해당 회사의 공식 스킬이나 인증된 구현은 아닙니다.
+스킬은 프로젝트 고유 정책·CI·사람의 리뷰를 대신하거나 배포·외부 변경 권한을 추가하지 않습니다.
+[평가 방법](evals/README.md) · [첫 비교와 한계](evals/results/iteration-1.md) ·
+[기여 방법](CONTRIBUTING.md) · [설계 근거](docs/sources.md) ·
+[다른 스킬과 비교한 결정](docs/skill-landscape.md)
 
 ## License
 
-MIT. [LICENSE](LICENSE)를 참고하세요.
+MIT. [LICENSE](LICENSE)를 참고하세요. 특정 회사의 공식 스킬이나 인증된 구현은 아닙니다.

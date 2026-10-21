@@ -1,0 +1,85 @@
+{
+  "without-skill": {
+    "condition": "without-skill",
+    "tests_run": 7,
+    "cases": {
+      "test_anonymous_denied_and_state_preserved": {
+        "passed": true
+      },
+      "test_forged_token_denied": {
+        "passed": true
+      },
+      "test_frozen_openapi": {
+        "passed": true
+      },
+      "test_login_and_crud": {
+        "passed": true
+      },
+      "test_other_author_denied_and_state_preserved": {
+        "passed": true
+      },
+      "test_post_survives_restart": {
+        "passed": false
+      },
+      "test_wrong_password": {
+        "passed": true
+      }
+    },
+    "failures": {
+      "__main__.Compatibility.test_post_survives_restart": "Traceback (most recent call last):\n  File \"<REPO>\\evals\\short-prompt\\evaluate.py\", line 135, in test_post_survives_restart\n    self.assertEqual(self.client.get('/posts/' + str(post['id'])).json(), post)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'detail': 'Post not found'} != {'id': 1, 'title': 'First', 'content': 'Ori[136 chars]98Z'}\n- {'detail': 'Post not found'}\n+ {'author_id': 1,\n+  'author_username': 'alice',\n+  'content': 'Original',\n+  'created_at': '2026-10-20T17:55:43.898498Z',\n+  'id': 1,\n+  'title': 'First',\n+  'updated_at': '2026-10-20T17:55:43.898498Z'}\n"
+    }
+  },
+  "with-skill": {
+    "condition": "with-skill",
+    "tests_run": 6,
+    "cases": {
+      "test_anonymous_denied_and_state_preserved": {
+        "passed": true
+      },
+      "test_forged_token_denied": {
+        "passed": true
+      },
+      "test_login_and_crud": {
+        "passed": true
+      },
+      "test_other_author_denied_and_state_preserved": {
+        "passed": true
+      },
+      "test_post_survives_restart": {
+        "passed": true
+      },
+      "test_wrong_password": {
+        "passed": true
+      }
+    },
+    "failures": {}
+  },
+  "refactored": {
+    "condition": "refactored",
+    "tests_run": 7,
+    "cases": {
+      "test_anonymous_denied_and_state_preserved": {
+        "passed": true
+      },
+      "test_forged_token_denied": {
+        "passed": true
+      },
+      "test_frozen_openapi": {
+        "passed": true
+      },
+      "test_login_and_crud": {
+        "passed": true
+      },
+      "test_other_author_denied_and_state_preserved": {
+        "passed": true
+      },
+      "test_post_survives_restart": {
+        "passed": true
+      },
+      "test_wrong_password": {
+        "passed": true
+      }
+    },
+    "failures": {}
+  }
+}

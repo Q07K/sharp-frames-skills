@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-21",
+  "design": "One fresh implementation per condition, identical requirements and dependency versions, separate directories, virtual environments and CLI sessions outside the repository.",
+  "conditions": ["without_skill", "with_skill"],
+  "treatment": "Only sharp-frames-development is installed as a project skill; the common task is prefixed with its explicit Claude Code invocation.",
+  "control": "No Sharp Frames project or user skill is exposed. Host bundled skills remain available equally in both conditions.",
+  "common_input": "REQUIREMENTS.md and flattened pinned requirements.txt; no starter implementation, previous examples, intended architecture or grader.",
+  "tools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "Skill"],
+  "permission_mode": "acceptEdits with the listed tools preapproved for the requested local implementation and tests",
+  "configuration": "project setting source only, explicit project settings, no MCP, no Chrome, no persisted/resumed session, no model override",
+  "generation_timeout_seconds_per_condition": 1200,
+  "stopping": "One generation per condition. Do not repair, prompt with grader failures, reroll or select a better candidate after viewing outcomes. Setup failures before generation are recorded separately.",
+  "primary": "Frozen external HTTP contract groups against the submitted entry point, new disposable DB and server process for each test; no internal module or table-name assumptions.",
+  "secondary": "Actual file trees, candidate self-tests and evidence of work; architecture and file counts are descriptive and not quality scores.",
+  "preflight": "Confirmed identical default model metadata, package versions and built-in skill lists, and treatment-only Sharp Frames visibility. Preflight sessions do not continue into implementation sessions.",
+  "limitations": [
+    "one synthetic task, one generation per condition; no statistical or causal productivity claim",
+    "same operating system, runtime installation, authenticated provider account and package cache",
+    "directory/context/configuration isolation, not separate machines, OS users or an adversarial file-access sandbox",
+    "native and shell tool calls are audited for cross-workspace or previous-example reads; this audit is not tamper-proof OS enforcement",
+    "headless CLI with preapproved editing/test tools, not an interactive browser or separate-user onboarding trial",
+    "scope excludes production authentication providers, deployment and performance measurement"
+  ]
+}

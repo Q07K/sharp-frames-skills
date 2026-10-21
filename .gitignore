@@ -4,3 +4,5 @@ __pycache__/
 .DS_Store
 Thumbs.db
 evals/runs/
+board-before.sqlite3*
+board-after.sqlite3*

@@ -16,5 +16,8 @@
 코드와 참고 자료의 라이선스를 확인하고, 외부 원칙은 출처를 연결해 설명합니다.
 
 기본 검사: `python tools/check_repository.py`
+실행기가 없는 경우나 Windows 실행 별칭 문제는 [Python 실행 안내](docs/python-runtime.md)를 참고하세요.
+호출 문법·자동 선택·다른 스킬과의 공존을 바꿀 때는
+[호스트 평가 절차](evals/routing/README.md)도 확인합니다.
 
 PR에는 문제와 전후 동작, 변경 이유, 검증 결과, 평가의 한계를 간결하게 적어 주세요.

@@ -1,0 +1,28 @@
+{
+  "condition": "without-skill",
+  "tests_run": 7,
+  "cases": {
+    "test_anonymous_denied_and_state_preserved": {
+      "passed": true
+    },
+    "test_forged_token_denied": {
+      "passed": true
+    },
+    "test_frozen_openapi": {
+      "passed": true
+    },
+    "test_login_and_crud": {
+      "passed": true
+    },
+    "test_other_author_denied_and_state_preserved": {
+      "passed": true
+    },
+    "test_post_survives_restart": {
+      "passed": true
+    },
+    "test_wrong_password": {
+      "passed": true
+    }
+  },
+  "failures": {}
+}

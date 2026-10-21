@@ -1,0 +1,24 @@
+{
+  "without-skill": {
+    "entrypoint": "app.main:app",
+    "signup": "/auth/signup",
+    "login": "/auth/login",
+    "update_method": "PATCH",
+    "list_key": "items"
+  },
+  "with-skill": {
+    "entrypoint": "app.main:create_app_from_env",
+    "factory": true,
+    "signup": "/auth/signup",
+    "login": "/auth/login",
+    "update_method": "PATCH",
+    "list_key": "items"
+  },
+  "refactored": {
+    "entrypoint": "app.main:app",
+    "signup": "/auth/signup",
+    "login": "/auth/login",
+    "update_method": "PATCH",
+    "list_key": "items"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "tests_run": 9,
+  "cases": {
+    "test_anonymous_cannot_write": {
+      "passed": true,
+      "detail": null
+    },
+    "test_author_crud": {
+      "passed": true,
+      "detail": null
+    },
+    "test_expired_session": {
+      "passed": true,
+      "detail": null
+    },
+    "test_forged_token_is_denied": {
+      "passed": true,
+      "detail": null
+    },
+    "test_missing_post": {
+      "passed": true,
+      "detail": null
+    },
+    "test_other_author_is_denied": {
+      "passed": true,
+      "detail": null
+    },
+    "test_registration_and_login": {
+      "passed": true,
+      "detail": null
+    },
+    "test_restart_preserves_data_and_session": {
+      "passed": true,
+      "detail": null
+    },
+    "test_validation_and_pagination": {
+      "passed": true,
+      "detail": null
+    }
+  }
+}

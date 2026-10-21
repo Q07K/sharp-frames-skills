@@ -1,12 +1,111 @@
 [
-  {"query":"기존 주문 생성 코드를 유지하면서 결제 전 견적 API도 추가해줘. 같은 정책을 쓰게 해줘.","should_trigger":true},
-  {"query":"사용자 권한 검사 버그를 수정하고 기존 API 응답은 유지해줘.","should_trigger":true},
-  {"query":"신규 FastAPI 백엔드를 만들어줘. 상품 조회와 주문까지 실제로 동작해야 해.","should_trigger":true},
-  {"query":"이 React 검색 기능을 고쳐줘. 다른 화면에서 쓰는 검색 모듈도 있어.","should_trigger":true},
-  {"query":"중복된 환불 계산을 정리하되 기존 정산 결과는 바뀌면 안 돼.","should_trigger":true},
-  {"query":"설정값 한 군데의 오타만 수정해줘.","should_trigger":true,"note":"Lightweight path only; no architecture exercise."},
-  {"query":"FastAPI의 의존성 주입이 뭔지 예시로 설명해줘.","should_trigger":false},
-  {"query":"개발자 느낌이 나는 스킬 저장소 이름을 추천해줘.","should_trigger":false},
-  {"query":"수정하지 말고 이 모듈이 하는 일만 설명해줘.","should_trigger":false},
-  {"query":"README의 설치 명령 설명만 더 이해하기 쉽게 고쳐줘.","should_trigger":false}
+  {
+    "query": "기존 주문 생성 코드를 유지하면서 결제 전 견적 API도 추가해줘. 같은 정책을 쓰게 해줘.",
+    "should_trigger": true,
+    "id": "development-01",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "사용자 권한 검사 버그를 수정하고 기존 API 응답은 유지해줘.",
+    "should_trigger": true,
+    "id": "development-02",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "신규 FastAPI 백엔드를 만들어줘. 상품 조회와 주문까지 실제로 동작해야 해.",
+    "should_trigger": true,
+    "id": "development-03",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "이 React 검색 기능을 고쳐줘. 다른 화면에서 쓰는 검색 모듈도 있어.",
+    "should_trigger": true,
+    "id": "development-04",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "중복된 환불 계산을 정리하되 기존 정산 결과는 바뀌면 안 돼.",
+    "should_trigger": true,
+    "id": "development-05",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "설정값 한 군데의 오타만 수정해줘.",
+    "should_trigger": true,
+    "note": "Lightweight path only; no architecture exercise.",
+    "id": "development-06",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "FastAPI의 의존성 주입이 뭔지 예시로 설명해줘.",
+    "should_trigger": false,
+    "id": "development-07",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "개발자 느낌이 나는 스킬 저장소 이름을 추천해줘.",
+    "should_trigger": false,
+    "id": "development-08",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "수정하지 말고 이 모듈이 하는 일만 설명해줘.",
+    "should_trigger": false,
+    "id": "development-09",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "query": "README의 설치 명령 설명만 더 이해하기 쉽게 고쳐줘.",
+    "should_trigger": false,
+    "id": "development-10",
+    "skill": "sharp-frames-development"
+  },
+  {
+    "id": "brainstorm-positive",
+    "skill": "sharp-frames-brainstorm",
+    "query": "이 shop 예제에서 재주문 기능을 넣을지 고민 중이야. 수정하지 말고 가능한 대안과 최소 범위, 수용 기준부터 비교해줘.",
+    "should_trigger": true
+  },
+  {
+    "id": "brainstorm-negative",
+    "skill": "sharp-frames-brainstorm",
+    "query": "요구는 확정됐어. 견적 API를 기존 가격 계산에 연결해서 구현해줘.",
+    "should_trigger": false
+  },
+  {
+    "id": "plan-positive",
+    "skill": "sharp-frames-plan",
+    "query": "이 shop 예제의 주문 가격 계산을 재사용해 견적 기능을 추가하려고 해. 코드는 바꾸지 말고 재사용 지점, 변경 순서와 수용 검사 계획을 세워줘.",
+    "should_trigger": true
+  },
+  {
+    "id": "plan-negative",
+    "skill": "sharp-frames-plan",
+    "query": "README 제목 오타 한 글자만 고쳐줘.",
+    "should_trigger": false
+  },
+  {
+    "id": "review-positive",
+    "skill": "sharp-frames-review",
+    "query": "이 shop 예제의 주문 가격 계산 코드를 리뷰해줘. 호출부와 테스트를 대조하고 근거 있는 결함만 보고해줘. 코드는 수정하지 마.",
+    "should_trigger": true
+  },
+  {
+    "id": "review-negative",
+    "skill": "sharp-frames-review",
+    "query": "이 저장소 전체를 진단하고 구조와 권한 경계에서 먼저 고칠 위험을 알려줘.",
+    "should_trigger": false
+  },
+  {
+    "id": "help-positive",
+    "skill": "sharp-frames-help",
+    "query": "Sharp Frames 명령 목록과 각 역할, 소스 수정 여부, 호출 예시를 알려줘.",
+    "should_trigger": true
+  },
+  {
+    "id": "help-negative",
+    "skill": "sharp-frames-help",
+    "query": "FastAPI의 의존성 주입을 예시로 설명해줘.",
+    "should_trigger": false
+  }
 ]

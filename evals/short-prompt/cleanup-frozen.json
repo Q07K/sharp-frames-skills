@@ -1,0 +1,24 @@
+{
+  "baseline": {
+    ".gitignore": "4395620e6761615c08a70c6902037a03fc9b3a57606b0b61451da6d03307cca9",
+    "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/db.py": "359adb714f1daf99efbc3175bb4137c74c0ba74e7d0d86afc33c9485707a6cb6",
+    "app/main.py": "f4417f8660241c9ea92863c0a54813c484d6924ddecbe7a8fabb65e3d1fd79c7",
+    "app/routers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/routers/auth.py": "7e04112d912f260441ee335db2bd7074b8f505a9fdee2d7389228c659843f2cf",
+    "app/routers/posts.py": "d301dfb806410c5f462ff48dd164c0979f5e81885b0cba15e0691d282c8decd8",
+    "app/schemas.py": "9efc4a1c9ec2a7ea36603bde8e83c6fd6403962171b40f90d03b7f29a0392cd9",
+    "app/security.py": "64e473b5093683352954d6f80bde018b3d02a0493fe82ccdf9d94f5af1e50f98",
+    "ENVIRONMENT.md": "181d1895c009b9e5a22ef7e337affe64796081f2b07a09bd7e7111f37d8be726",
+    "README.md": "d2d8b0a8231afe3c4f1a1b654a31406bb98d8a87c95deafa95e34227ee3759dc",
+    "requirements.txt": "67317ef2af22c81a41e66abf0480f8e0138097a553718ef746e869260c155cfe",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_api.py": "6107d6e63d00ec96ad3968e73778c6c1e7c6da63736eba303526185c3dd297f0"
+  },
+  "checks": {
+    "evaluate.py": "37bec7648108c62f33246a1f69deeb0eb953c7d1c50f780e73b1d0dc8c592610",
+    "adapters.json": "8d3a64aef528c2151134bdb667728c4b365628e83ecfc40cc4606091b14f8bac",
+    "baseline-openapi.json": "3239b04e7298db54ba87cd9ae0323c0ded7bbcd15b6140af1a98df3b661b702d",
+    "without-skill-results.json": "24673100faaa7ca295edabf0c07b6e6be03f31e61ab91b66611839a6323302d1"
+  }
+}

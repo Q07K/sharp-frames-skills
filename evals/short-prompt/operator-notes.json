@@ -1,0 +1,5 @@
+{
+  "replay_harness_repair": "When changing replay to continue after a known differing result, a local observations variable was overwritten with the archived submission list. The next replay stopped with TypeError after again observing the original restart failure. Renamed the archived list variable before the following replay; no candidate, frozen grader, baseline, expectations or original results changed.",
+  "repository_unit_test_environment": "Initial repository helper unit tests hit sandbox temporary-directory path virtualization/cleanup permission errors. The identical 8 tests passed with normal temporary-directory permissions; this was an environment rerun, not a code repair.",
+  "replay_interpretation": "A nonzero replay exit when the original restart race differs from the initial pass is retained as failure, not converted to a pass."
+}

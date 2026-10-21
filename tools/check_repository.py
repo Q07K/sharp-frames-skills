@@ -78,6 +78,9 @@ def main() -> None:
     check(any(c["should_trigger"] for c in triggers), "No positive routing cases")
     check(any(not c["should_trigger"] for c in triggers), "No negative routing cases")
     check(all(isinstance(c["should_trigger"], bool) and c["query"] for c in triggers), "Invalid routing case")
+    trigger_ids = [c["id"] for c in triggers]
+    check(all(trigger_ids) and len(trigger_ids) == len(set(trigger_ids)), "Invalid routing case IDs")
+    check(all(c["skill"] in names for c in triggers), "Unknown routing target skill")
 
     fixture = ROOT / "evals/fixtures/shop"
     result = subprocess.run(

@@ -26,6 +26,10 @@ requires it; otherwise show the proposed entries without creating a file.
 
 For marker candidates you may run [scan_debt.py](scripts/scan_debt.py):
 `python <skill-dir>/scripts/scan_debt.py --root <repo>`.
+Use an existing Python 3 interpreter; the helper needs only the standard library.
+For an unavailable `python` command, see [runtime guidance](references/python-runtime.md).
+If the helper cannot run, inspect candidates directly and disclose that it was
+not run; do not install a runtime merely to perform this optional scan.
 It reads Git-listed tracked and untracked nonignored files and emits JSON only.
 Python comments are tokenized; other languages use a documented comment-line
 heuristic. Review every candidate and disclose skipped/unsupported files. A

@@ -32,3 +32,9 @@ jobs:
         run: python -X utf8 evals/fastapi/replay_evidence.py
       - name: Reproduce saved TDD and workflow checks
         run: python -X utf8 evals/tdd/replay_evidence.py
+      - name: Install README example dependencies
+        run: python -m pip install --disable-pip-version-check -r examples/fastapi-board/requirements.txt
+      - name: Check both README example implementations
+        run: python -X utf8 examples/fastapi-board/tests/test_contract.py
+      - name: Reproduce independent board API submissions
+        run: python -X utf8 evals/board-independent/replay.py

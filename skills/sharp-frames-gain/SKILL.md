@@ -43,6 +43,14 @@ with two JSON paths. Read [measurement format](references/measurements.md) when
 preparing inputs. The helper checks declared comparability and arithmetic; it
 does not verify that a reported measurement actually happened.
 
+Run it with an available Python 3 interpreter:
+`python <skill-dir>/scripts/compare_metrics.py <before.json> <after.json>`.
+The helper needs only Python 3 and the standard library. For an unavailable
+`python` command, see [runtime guidance](references/python-runtime.md).
+If it cannot run, check supplied comparisons manually and disclose that the
+helper was not run; qualitative explanation can continue without installing a
+runtime.
+
 ## Deliver a compact impact table
 
 Use aspect, before, after, evidence/verification, confidence/limitations and

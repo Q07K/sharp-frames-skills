@@ -9,7 +9,20 @@
 세 검사는 서로 대체하지 않습니다. `triggers.json`의 분류를 사람이 검토한 결과는
 플랫폼의 실제 자동 선택 성공률이 아닙니다.
 
+`triggers.json`의 `skill`은 해당 사례에서 선택 여부를 관찰할 대상입니다.
+`should_trigger: false`는 모든 스킬을 쓰지 말라는 뜻이 아닙니다.
+구현·brainstorm·plan·review·help의 선택과 Superpowers 공존을 확인하는
+[실제 호스트 평가 절차](routing/README.md)를 제공합니다. 직접 호출 검사는 자연어
+자동 선택 검사와 구분합니다.
+
 ## 초기 과제
+
+[짧은 한 문장 요청 실험](short-prompt/README.md)은 같은 요청의 미사용/사용 새 개발과,
+미사용 결과에 스킬을 적용한 코드 정리를 구분합니다. 긴 명세를 제공한 실험과 따로 기록합니다.
+
+[독립된 새 작업 공간의 게시글 API 비교](board-independent/README.md)는 시작 코드 없이
+조건별 새 세션·별도 가상환경에서 구현한 사례입니다. 이전 README의 한 작성자 설명용
+리팩터링과 구분하며, 두 원본 제출물에 같은 외부 HTTP 검사를 적용합니다.
 
 `evals.json`에 두 요청과 평가 기준이 있습니다. `fixtures/shop`은 외부 의존성이 없는
 작은 Python 예제이며 FastAPI/DB 통합 벤치마크는 아닙니다.
